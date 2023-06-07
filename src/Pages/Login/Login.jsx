@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import Swal from 'sweetalert2'
@@ -6,8 +6,11 @@ import { Helmet } from "react-helmet-async";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { useContext } from "react";
 const Login = () => {
+  const location = useLocation()
+  const navigate = useNavigate()
   const { register, handleSubmit, reset } = useForm();
   const {handleLogin, handleGoogleSignIn} = useContext(AuthContext)
+  const from = location.state?.from?.pathname || "/";
   const onSubmit = (data) => {
     handleLogin(data.email,data.password)
     .then(result =>{
@@ -20,7 +23,7 @@ const Login = () => {
           timer: 1500
         })
         reset()
-        // navigate(from, {replace : true});
+        navigate(from, {replace : true});
     })
     .catch(error =>{
         console.log(error.message);
@@ -38,7 +41,7 @@ const Login = () => {
           showConfirmButton: false,
           timer: 1500
         })
-        // navigate(from, {replace : true});
+        navigate(from, {replace : true});
     })
     .catch(error =>{
         console.log(error.message);

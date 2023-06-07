@@ -192,8 +192,8 @@ const Register = () => {
                   <span className="label-text">Gender</span>
                 </label>
                 <select className="w-full px-3 py-2 border rounded" {...register("gender")}>
-                  <option className="w-full px-3 py-2 border rounded" value="female">female</option>
                   <option className="w-full px-3 py-2 border rounded" value="male">male</option>
+                  <option className="w-full px-3 py-2 border rounded" value="female">female</option>
                   <option className="w-full px-3 py-2 border rounded" value="other">other</option>
                 </select>
               </div>
