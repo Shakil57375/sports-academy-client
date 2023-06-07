@@ -1,11 +1,48 @@
 import { Link } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
 import { useForm } from "react-hook-form";
+import Swal from 'sweetalert2'
 import { Helmet } from "react-helmet-async";
+import { AuthContext } from "../../Provider/AuthProvider";
+import { useContext } from "react";
 const Login = () => {
   const { register, handleSubmit, reset } = useForm();
+  const {handleLogin, handleGoogleSignIn} = useContext(AuthContext)
   const onSubmit = (data) => {
-    console.log(data);
+    handleLogin(data.email,data.password)
+    .then(result =>{
+      console.log(result)
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: "user logged in successfully",
+          showConfirmButton: false,
+          timer: 1500
+        })
+        reset()
+        // navigate(from, {replace : true});
+    })
+    .catch(error =>{
+        console.log(error.message);
+    })
+  };
+  const handleGoogleLogin = () => {
+    handleGoogleSignIn()
+    .then(result =>{
+        const loggedUser = result.user
+        console.log(loggedUser);
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: "user logged in successfully",
+          showConfirmButton: false,
+          timer: 1500
+        })
+        // navigate(from, {replace : true});
+    })
+    .catch(error =>{
+        console.log(error.message);
+    })
   };
   return (
     <>
@@ -66,7 +103,7 @@ const Login = () => {
             </form>
             <div className="divider">OR</div>
             <button
-              // onClick={handleGoogleSignIn}
+              onClick={handleGoogleLogin}
               className="btn btn-circle btn-outline mx-auto mb-5"
             >
               <FaGoogle className="text-red-600 "></FaGoogle>

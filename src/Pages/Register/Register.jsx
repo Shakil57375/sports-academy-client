@@ -1,6 +1,7 @@
 import { Link, useNavigate} from "react-router-dom";
 import { FaEyeSlash, FaEye, FaGoogle } from "react-icons/fa";
 import { useForm } from "react-hook-form";
+import Swal from 'sweetalert2'
 import { Helmet } from "react-helmet-async";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
@@ -21,7 +22,13 @@ const Register = () => {
         const user = result.user;
         console.log(user);
         updateData(result.user, data.name, data.photoURL);
-        alert("registered successfully");
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: "user logged in successfully",
+          showConfirmButton: false,
+          timer: 1500
+        })
         reset()
         logOut()
           .then((result) => {
@@ -54,7 +61,13 @@ const Register = () => {
     .then(result =>{
         const loggedUser = result.user
         console.log(loggedUser);
-        alert("logged in successfully")
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: "user logged in successfully",
+          showConfirmButton: false,
+          timer: 1500
+        })
         // navigate(from, {replace : true});
     })
     .catch(error =>{
