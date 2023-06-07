@@ -1,8 +1,11 @@
 import { Link} from "react-router-dom";
+import { FaEyeSlash, FaEye } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import { Helmet } from "react-helmet-async";
+import { useState } from "react";
 
 const Register = () => {
+  const [show, setShow] = useState(false);
   const {
     register,
     handleSubmit,
@@ -69,13 +72,12 @@ const Register = () => {
                   <span className="text-red-600">Email is required</span>
                 )}
               </div>
-              {/* TO DO Uncomment password validation */}
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Password</span>
                 </label>
                 <input
-                  type="password"
+                  type={show ? "text" : "password"}
                   placeholder="password"
                   {...register("password", {
                     required: true,
@@ -93,6 +95,22 @@ const Register = () => {
                     and minimum 6 character.
                   </p>
                 )}
+                <p
+                  className="absolute top-[330px] right-10"
+                  onClick={() => setShow(!show)}
+                >
+                  <small>
+                    {show ? (
+                      <span>
+                        <FaEyeSlash className="text-2xl" />
+                      </span>
+                    ) : (
+                      <span>
+                        <FaEye className="text-2xl" />
+                      </span>
+                    )}
+                  </small>
+                </p>
               </div>
               <div className="form-control">
                 <label className="label">
