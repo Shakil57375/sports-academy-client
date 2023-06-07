@@ -1,11 +1,14 @@
-import { Link} from "react-router-dom";
-import { FaEyeSlash, FaEye } from "react-icons/fa";
+import { Link, useNavigate} from "react-router-dom";
+import { FaEyeSlash, FaEye, FaGoogle } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import { Helmet } from "react-helmet-async";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Register = () => {
   const [show, setShow] = useState(false);
+  const navigate = useNavigate()
+  const { handleRegister, updateUser, handleGoogleSignIn, logOut } = useContext(AuthContext);
   const {
     register,
     handleSubmit,
@@ -13,8 +16,52 @@ const Register = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    console.log(data);
+    handleRegister(data.email, data.password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        updateData(result.user, data.name, data.photoURL);
+        alert("registered successfully");
+        reset()
+        logOut()
+          .then((result) => {
+            console.log(result.user);
+          })
+          .catch((error) => {
+            console.log(error.message);
+          });
+        navigate("/login");
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+    const updateData = (user, name, photo) => {
+      updateUser(user, {
+        displayName: name,
+        photoURL: photo,
+      })
+        .then(() => {
+          console.log("updated");
+        })
+        .catch((error) => {
+          console.log(error.message);
+        });
+    };
   };
+  
+  const handleGoogleLogin = () => {
+    handleGoogleSignIn()
+    .then(result =>{
+        const loggedUser = result.user
+        console.log(loggedUser);
+        alert("logged in successfully")
+        // navigate(from, {replace : true});
+    })
+    .catch(error =>{
+        console.log(error.message);
+    })
+  };
+
   return (
     <>
       <Helmet>
@@ -166,6 +213,13 @@ const Register = () => {
                 </small>
               </p>
             </form>
+            <div className="divider">OR</div>
+            <button
+              onClick={handleGoogleLogin}
+              className="btn btn-circle btn-outline mx-auto mb-5"
+            >
+              <FaGoogle className="text-red-600 "></FaGoogle>
+            </button>
           </div>
         </div>
       </div>

@@ -64,13 +64,13 @@ const Login = () => {
                 </small>
               </p>
             </form>
-              <div className="divider">OR</div>
-              <button
-                // onClick={handleGoogleSignIn}
-                className="btn btn-circle btn-outline mx-auto mb-5"
-              >
-                <FaGoogle className="text-red-600 "></FaGoogle>
-              </button>
+            <div className="divider">OR</div>
+            <button
+              // onClick={handleGoogleSignIn}
+              className="btn btn-circle btn-outline mx-auto mb-5"
+            >
+              <FaGoogle className="text-red-600 "></FaGoogle>
+            </button>
           </div>
         </div>
       </div>
