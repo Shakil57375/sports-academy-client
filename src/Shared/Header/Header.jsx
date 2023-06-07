@@ -10,7 +10,7 @@ const Header = () => {
   return (
     <div>
       <div className="navbar bg-base-100 shadow-xl max-w-7xl lg:py-8 py-4 lg:px-8 px-4 z-50">
-        <div className="navbar-start">
+        <div className="navbar-start z-50">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
               <svg
