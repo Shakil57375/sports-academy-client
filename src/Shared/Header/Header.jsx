@@ -1,11 +1,26 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Header = () => {
+  const {user, logOut} = useContext(AuthContext)
+  const handleLogOut = () =>{
+    logOut()
+    .then(result =>{
+      const loggedUser = result.user
+      console.log(loggedUser);
+    })
+    .catch(error =>{
+      console.log(error.message);
+    })
+  }
     const items = <div className="flex flex-col lg:flex-row gap-5">
         <Link className="text-lg text-gray-700 font-Poppins" to="/">Home</Link>
         <Link className="text-lg text-gray-700 font-Poppins" to="/instructors">Instructors</Link>
         <Link className="text-lg text-gray-700 font-Poppins" to="/classes">Classes</Link>
-        <Link className="text-lg text-gray-700 font-Poppins" to="/dashboard">Dashboard</Link>
+        {
+          user && <Link className="text-lg text-gray-700 font-Poppins" to="/dashboard">Dashboard</Link>
+        }
     </div>
   return (
     <div>
@@ -45,9 +60,16 @@ const Header = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <Link to="/login">
-          <button className="btn my-btn">Login</button>
-          </Link>
+          <div>
+            {
+              user ? <><div className="flex gap-2 cursor-pointer">
+              <span className='text-white mr-0 lg:mr-3 '> <img src={user.photoURL} title = {user.displayName ? user.displayName : " "} width={50} height={50} className="rounded-full" alt="" /></span>
+              <button className="my-btn btn" onClick={handleLogOut}>Sign Out</button>
+            </div></> : <div><Link to="/login">
+              <button className="btn my-btn">Login</button>
+              </Link></div>
+            }
+          </div>
         </div>
       </div>
     </div>
