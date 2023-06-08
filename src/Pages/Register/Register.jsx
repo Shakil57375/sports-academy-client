@@ -1,15 +1,16 @@
-import { Link, useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaEyeSlash, FaEye, FaGoogle } from "react-icons/fa";
 import { useForm } from "react-hook-form";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 
 const Register = () => {
   const [show, setShow] = useState(false);
-  const navigate = useNavigate()
-  const { handleRegister, updateUser, handleGoogleSignIn, logOut } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const { handleRegister, updateUser, handleGoogleSignIn, logOut } =
+    useContext(AuthContext);
   const {
     register,
     handleSubmit,
@@ -17,19 +18,34 @@ const Register = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
+    console.log(data);
     handleRegister(data.email, data.password)
       .then((result) => {
         const user = result.user;
         console.log(user);
-        updateData(result.user, data.name, data.photoURL);
-        Swal.fire({
-          position: 'center',
-          icon: 'success',
-          title: "user logged in successfully",
-          showConfirmButton: false,
-          timer: 1500
-        })
-        reset()
+        updateUser(data.name, data.photoURL).then(() => {
+          const user = { name: data.name, email: data.email };
+          fetch("http://localhost:5000/users", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(user),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              if (data.insertedId) {
+                reset();
+                Swal.fire({
+                  position: "center",
+                  icon: "success",
+                  title: "User Created Successfully",
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
+              }
+            });
+        });
         logOut()
           .then((result) => {
             console.log(result.user);
@@ -42,37 +58,25 @@ const Register = () => {
       .catch((error) => {
         console.log(error.message);
       });
-    const updateData = (user, name, photo) => {
-      updateUser(user, {
-        displayName: name,
-        photoURL: photo,
-      })
-        .then(() => {
-          console.log("updated");
-        })
-        .catch((error) => {
-          console.log(error.message);
-        });
-    };
   };
-  
+
   const handleGoogleLogin = () => {
     handleGoogleSignIn()
-    .then(result =>{
-        const loggedUser = result.user
+      .then((result) => {
+        const loggedUser = result.user;
         console.log(loggedUser);
         Swal.fire({
-          position: 'center',
-          icon: 'success',
+          position: "center",
+          icon: "success",
           title: "user logged in successfully",
           showConfirmButton: false,
-          timer: 1500
-        })
+          timer: 1500,
+        });
         // navigate(from, {replace : true});
-    })
-    .catch(error =>{
+      })
+      .catch((error) => {
         console.log(error.message);
-    })
+      });
   };
 
   return (
@@ -83,8 +87,13 @@ const Register = () => {
       <div className="min-h-screen bg-base-200 my-10">
         <div className="flex flex-col lg:flex-row justify-center items-center gap-5 lg:gap-10">
           <div className="text-center lg:ml-20 ml-0 w-full md:w-1/2 lg:my-0 my-5 lg:text-left">
-            <h1 className="text-5xl text-center font-bold lg:mb-16 mb-5">Register now!</h1>
-            <img src="https://i.ibb.co/GMZ8pnb/register-graphics-removebg-preview.png" alt="" />
+            <h1 className="text-5xl text-center font-bold lg:mb-16 mb-5">
+              Register now!
+            </h1>
+            <img
+              src="https://i.ibb.co/GMZ8pnb/register-graphics-removebg-preview.png"
+              alt=""
+            />
           </div>
           <div className="card flex-shrink-0 md:w-1/2 w-full m-10 shadow-2xl bg-base-100">
             <form onSubmit={handleSubmit(onSubmit)} className="card-body">
@@ -184,17 +193,37 @@ const Register = () => {
                   className="w-full px-3 py-2 border rounded"
                 />
                 {errors.password && (
-                  <span className="text-red-600">Confirm password is required</span>
+                  <span className="text-red-600">
+                    Confirm password is required
+                  </span>
                 )}
               </div>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Gender</span>
                 </label>
-                <select className="w-full px-3 py-2 border rounded" {...register("gender")}>
-                  <option className="w-full px-3 py-2 border rounded" value="male">male</option>
-                  <option className="w-full px-3 py-2 border rounded" value="female">female</option>
-                  <option className="w-full px-3 py-2 border rounded" value="other">other</option>
+                <select
+                  className="w-full px-3 py-2 border rounded"
+                  {...register("gender")}
+                >
+                  <option
+                    className="w-full px-3 py-2 border rounded"
+                    value="male"
+                  >
+                    male
+                  </option>
+                  <option
+                    className="w-full px-3 py-2 border rounded"
+                    value="female"
+                  >
+                    female
+                  </option>
+                  <option
+                    className="w-full px-3 py-2 border rounded"
+                    value="other"
+                  >
+                    other
+                  </option>
                 </select>
               </div>
               <div className="form-control">

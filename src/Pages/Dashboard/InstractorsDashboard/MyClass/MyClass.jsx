@@ -1,0 +1,12 @@
+const MyClass = () => {
+    return (
+        <div>
+            <p>My class here</p>
+            <input type="text" placeholder="my class here" name="" id="" />
+            <input type="text" placeholder="my class here 2" name="" id="" />
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi nam culpa et ducimus modi deserunt minima quidem quibusdam ad id at sed saepe esse minus illum, provident corporis praesentium sint dicta officiis ratione eos veritatis distinctio! Repudiandae, tenetur voluptatibus modi eaque rem dignissimos harum impedit nesciunt incidunt sequi error minus quaerat? Ea cum culpa provident quis? Officiis voluptate numquam nisi accusantium id! Praesentium rem eum in mollitia ratione illum quis, sunt non. Officiis officia esse unde ipsa tempore, sequi quisquam, possimus iste laborum illum nobis dicta doloribus labore tenetur earum magnam illo architecto provident facere quibusdam libero quas optio. Ex laudantium at distinctio laborum aperiam nesciunt eius, numquam labore quasi cupiditate natus vero delectus velit unde impedit voluptate fugiat consequuntur exercitationem molestiae. Possimus nihil beatae molestias incidunt unde quisquam dolorum sequi, nisi doloremque esse itaque quidem, aliquam asperiores porro illum quas error voluptates maiores, iure impedit fugit fugiat. Eius expedita et atque possimus quas minima consequatur repellendus distinctio quod fuga! Sit blanditiis error, exercitationem officiis commodi aut tenetur vel sapiente, laudantium soluta animi consequuntur odit aspernatur laboriosam facere quia, perspiciatis placeat sunt aliquam nihil corporis nostrum. Repellat, ratione itaque eum distinctio fugiat sit explicabo quas numquam? Sed magni odit obcaecati recusandae harum non asperiores tempore libero. Earum animi est, iure illum praesentium non tempore perferendis ea. Dolorum vitae pariatur molestias quae odit laboriosam optio suscipit voluptate voluptatibus, nostrum neque quisquam id animi libero ab maxime nam iste vero, iure qui nulla, itaque et voluptates officia. Dicta reprehenderit, quos aliquid qui, voluptas, officia eius animi perspiciatis ut laudantium iusto quis. Reiciendis accusantium aliquam aliquid blanditiis, alias, tempore quas odit fuga sunt sapiente sequi nemo labore. In consequuntur nulla omnis rerum repellat ab fugit deleniti quisquam ipsa maiores quae itaque neque accusamus molestias corporis alias explicabo ipsum cumque provident, incidunt magnam dicta.</p>
+        </div>
+    );
+};
+
+export default MyClass;
