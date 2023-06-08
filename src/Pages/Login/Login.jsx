@@ -1,52 +1,74 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
 import { useForm } from "react-hook-form";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { useContext } from "react";
 const Login = () => {
-  const location = useLocation()
-  const navigate = useNavigate()
+  const location = useLocation();
+  const navigate = useNavigate();
   const { register, handleSubmit, reset } = useForm();
-  const {handleLogin, handleGoogleSignIn} = useContext(AuthContext)
+  const { handleLogin, handleGoogleSignIn, setLoader } = useContext(AuthContext);
   const from = location.state?.from?.pathname || "/";
   const onSubmit = (data) => {
-    handleLogin(data.email,data.password)
-    .then(result =>{
-      console.log(result)
+    handleLogin(data.email, data.password)
+      .then((result) => {
+        console.log(result);
         Swal.fire({
-          position: 'center',
-          icon: 'success',
+          position: "center",
+          icon: "success",
           title: "user logged in successfully",
           showConfirmButton: false,
-          timer: 1500
-        })
-        reset()
-        navigate(from, {replace : true});
-    })
-    .catch(error =>{
+          timer: 1500,
+        });
+        reset();
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
         console.log(error.message);
-    })
+      });
   };
-  const handleGoogleLogin = () => {
+  const  handleGoogleLogin = () => {
     handleGoogleSignIn()
-    .then(result =>{
-        const loggedUser = result.user
-        console.log(loggedUser);
-        Swal.fire({
-          position: 'center',
-          icon: 'success',
-          title: "user logged in successfully",
-          showConfirmButton: false,
-          timer: 1500
+        .then(result => {
+            const loggerUser = result.user
+            console.log(loggerUser);
+
+            const savedUser = {
+                name: loggerUser.displayName,
+                email: loggerUser.email,
+            };
+
+            fetch('http://localhost:5000/users', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(savedUser)
+            })
+                .then((response) => response.json())
+                .then(() => {
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'User successfully login by google.',
+                        showConfirmButton: true,
+                        // timer: 1500
+                    });
+                    navigate(from, { replace: true });
+                })
+                .catch((error) => {
+                  setLoader(false);
+                    console.log(error);
+                })
         })
-        navigate(from, {replace : true});
-    })
-    .catch(error =>{
-        console.log(error.message);
-    })
-  };
+        .catch(error => {
+          setLoader(false);
+            const ErrorMessage = error.message;
+            console.log(ErrorMessage)
+        })
+}
   return (
     <>
       <Helmet>

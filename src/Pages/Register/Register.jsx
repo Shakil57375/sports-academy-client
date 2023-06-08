@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaEyeSlash, FaEye, FaGoogle } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
@@ -7,9 +7,11 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 
 const Register = () => {
-  const [show, setShow] = useState(false);
+  const location = useLocation();
   const navigate = useNavigate();
-  const { handleRegister, updateUser, handleGoogleSignIn, logOut } =
+  const [show, setShow] = useState(false);
+  const from = location.state?.from?.pathname || "/";
+  const { handleRegister, updateUser, handleGoogleSignIn, logOut, setLoader } =
     useContext(AuthContext);
   const {
     register,
@@ -60,24 +62,47 @@ const Register = () => {
       });
   };
 
-  const handleGoogleLogin = () => {
+  const  handleGoogleLogin = () => {
     handleGoogleSignIn()
-      .then((result) => {
-        const loggedUser = result.user;
-        console.log(loggedUser);
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: "user logged in successfully",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-        // navigate(from, {replace : true});
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
-  };
+        .then(result => {
+            const loggerUser = result.user
+            console.log(loggerUser);
+
+            const savedUser = {
+                name: loggerUser.displayName,
+                email: loggerUser.email,
+            };
+
+            fetch('http://localhost:5000/users', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(savedUser)
+            })
+                .then((response) => response.json())
+                .then(() => {
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'User successfully login by google.',
+                        showConfirmButton: true,
+                        // timer: 1500
+                    });
+                    navigate(from, { replace: true });
+                })
+                .catch((error) => {
+                  setLoader(false);
+                    console.log(error);
+                })
+        })
+        .catch(error => {
+          setLoader(false);
+            const ErrorMessage = error.message;
+            console.log(ErrorMessage)
+        })
+}
+
 
   return (
     <>
