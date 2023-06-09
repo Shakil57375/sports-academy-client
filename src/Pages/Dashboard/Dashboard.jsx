@@ -1,27 +1,21 @@
 import { useState } from "react";
-// import logo from '../assets/logo.png';
-// import { FaHome } from "react-icons/fa";
-// import { HiAnnotation } from "react-icons/hi";
 import { Link, Outlet } from "react-router-dom";
 import ActiveLink from "../../Components/ActiveLink/ActiveLink";
-// import UseCart from '../Hook/UseCart';
-// import useAdmin from '../Hook/useAdmin';
+import useAdmin from "../../hooks/useAdmin";
+import useInstructor from "../../hooks/useInstructor";
 
 const Dashboard = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  // const [cart] = UseCart();
-  // console.log(cart);
-  // const [isAdmin] = useAdmin();
-  const isAdmin = true;
-  const isInstructors = false; 
-  const isUser = false;
+  const [isAdmin] = useAdmin();
+  console.log(isAdmin);
+  const [isInstructor] = useInstructor();
+  console.log(isInstructor);
 
   const handleToggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
   };
 
   const handleCloseDashboard = () => {
-    // Logic to close the dashboard goes here
     setSidebarOpen(false);
   };
 
@@ -52,7 +46,7 @@ const Dashboard = () => {
       </button>
 
       <aside
-        id="separator-sidebar "
+        id="separator-sidebar"
         className={`fixed top-0 lg:left-20 left-0 z-40 w-64 h-screen transition-transform ${
           sidebarOpen ? "" : "-translate-x-full sm:translate-x-0"
         }`}
@@ -70,7 +64,7 @@ const Dashboard = () => {
               </Link>
             </li>
 
-            {isAdmin && (
+            {isAdmin ? (
               <div className="flex flex-col gap-3">
                 <ActiveLink
                   onClick={handleCloseDashboard}
@@ -78,12 +72,14 @@ const Dashboard = () => {
                 >
                   <span className="flex-1 ml-6 ">manage users</span>
                 </ActiveLink>
-                <ActiveLink onClick={handleCloseDashboard} to="/dashboard/manageClasses">
-                  <span className="flex-1 ml-6 ">Mange Classes</span>
+                <ActiveLink
+                  onClick={handleCloseDashboard}
+                  to="/dashboard/manageClasses"
+                >
+                  <span className="flex-1 ml-6 ">Manage Classes</span>
                 </ActiveLink>
               </div>
-            ) }
-            {isInstructors && (
+            ) : isInstructor ? (
               <div className="flex flex-col gap-3">
                 <ActiveLink
                   onClick={handleCloseDashboard}
@@ -91,24 +87,29 @@ const Dashboard = () => {
                 >
                   <span className="flex-1 ml-6 ">Add Class</span>
                 </ActiveLink>
-                <ActiveLink onClick={handleCloseDashboard} to="/dashboard/myClass">
-                  <span className="flex-1 ml-6 ">Add Items</span>
+                <ActiveLink
+                  onClick={handleCloseDashboard}
+                  to="/dashboard/myClass"
+                >
+                  <span className="flex-1 ml-6 ">My Classes</span>
                 </ActiveLink>
               </div>
-            ) }
-            {isUser && (
+            ) : (
               <div className="flex flex-col gap-3">
                 <ActiveLink
                   onClick={handleCloseDashboard}
-                  to="/dashboard/addClass"
+                  to="/dashboard/selectedClasses"
                 >
                   <span className="flex-1 ml-6 ">Selected Classes</span>
                 </ActiveLink>
-                <ActiveLink onClick={handleCloseDashboard} to="/dashboard/myClass">
-                  <span className="flex-1 ml-6 ">Enrolled classes</span>
+                <ActiveLink
+                  onClick={handleCloseDashboard}
+                  to="/dashboard/enrolledClasses"
+                >
+                  <span className="flex-1 ml-6 ">Enrolled Classes</span>
                 </ActiveLink>
               </div>
-            ) }
+            )}
           </ul>
         </div>
       </aside>

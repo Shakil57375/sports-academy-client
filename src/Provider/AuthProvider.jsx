@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import axios from "axios";
 import { createContext, useEffect, useState } from "react";
 import {
   GoogleAuthProvider,
@@ -41,9 +42,21 @@ const AuthProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (loggedUser) => {
-      setUser(loggedUser);
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
       // console.log(loggedUser);
+
+      // get and set token
+      if(currentUser){
+        axios.post("http://localhost:5000/jwt", {email: currentUser.email})
+        .then(data => {
+          // console.log(data.data);
+          localStorage.setItem("access-token", data.data)
+        })
+      }
+      else{
+        localStorage.removeItem("access-token")
+      }
       setLoader(false);
     });
     return () => {
