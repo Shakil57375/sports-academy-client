@@ -4,7 +4,8 @@ import useAxiosSecures from "../../../../hooks/useAxiosSecures";
 
 const ClassCards = ({ singleClass, refetch }) => {
   const [axiosSecure] = useAxiosSecures();
-  const { image, className, status, _id } = singleClass;
+  const { image, className, status, _id, instructorName, instructorEmail, AvailableSeats, price } = singleClass;
+  console.log(singleClass);
 
   const handleApprove = async (id) => {
     const res = await axiosSecure.patch(`/classes/approve/${id}`);
@@ -36,14 +37,17 @@ const ClassCards = ({ singleClass, refetch }) => {
 
   return (
     <div>
-      <div className="card w-[450px] h-[500px] bg-base-100 shadow-xl">
-        <figure>
-          <img src={image} alt="Shoes" className="h-[250px]" />
+      <div className="card w-[450px] h-[500px] bg-base-100 shadow-xl ">
+        <figure className="relative">
+          <img src={image} alt="Shoes" className="h-[250px] " />
         </figure>
         <div className="card-body">
+          <h4 className="absolute top-[188px] -right-2 my-btn"> {status}</h4>
           <h2 className="card-title">{className}</h2>
-          <h4>Status: {status}</h4>
-          <p>If a dog chews shoes whose shoes does he choose?</p>
+          <p>{instructorName}</p>
+          <p>{instructorEmail}</p>
+          <p>{AvailableSeats}</p>
+          <p>{price}</p>
           <div className="flex gap-5">
             <button
               onClick={() => handleApprove(_id)}

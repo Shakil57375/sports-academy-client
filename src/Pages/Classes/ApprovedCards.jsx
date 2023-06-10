@@ -1,5 +1,4 @@
 const ApprovedCards = (singleClass) => {
-    console.log(singleClass.singleClass);
     const {image, className, instructorName, AvailableSeats, price} = singleClass.singleClass
     
   return (

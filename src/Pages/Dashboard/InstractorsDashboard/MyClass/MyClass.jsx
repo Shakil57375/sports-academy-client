@@ -1,11 +1,67 @@
+import { useContext } from "react";
+import { AuthContext } from "../../../../Provider/AuthProvider";
+import { useQuery } from "@tanstack/react-query";
+import { FaEdit } from "react-icons/fa";
+import { Helmet } from "react-helmet";
+
 const MyClass = () => {
+    const {user} = useContext(AuthContext)
+    console.log(user.email);
+    const {data : MyClasses = []} = useQuery({
+        queryKey : ["approvedClass"],
+        queryFn : async() =>{
+          const res = await fetch(`http://localhost:5000/class?email=${user.email}`);
+          return res.json()
+        }
+      })
+      console.log(MyClasses);
     return (
-        <div>
-            <p>My class here</p>
-            <input type="text" placeholder="my class here" name="" id="" />
-            <input type="text" placeholder="my class here 2" name="" id="" />
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi nam culpa et ducimus modi deserunt minima quidem quibusdam ad id at sed saepe esse minus illum, provident corporis praesentium sint dicta officiis ratione eos veritatis distinctio! Repudiandae, tenetur voluptatibus modi eaque rem dignissimos harum impedit nesciunt incidunt sequi error minus quaerat? Ea cum culpa provident quis? Officiis voluptate numquam nisi accusantium id! Praesentium rem eum in mollitia ratione illum quis, sunt non. Officiis officia esse unde ipsa tempore, sequi quisquam, possimus iste laborum illum nobis dicta doloribus labore tenetur earum magnam illo architecto provident facere quibusdam libero quas optio. Ex laudantium at distinctio laborum aperiam nesciunt eius, numquam labore quasi cupiditate natus vero delectus velit unde impedit voluptate fugiat consequuntur exercitationem molestiae. Possimus nihil beatae molestias incidunt unde quisquam dolorum sequi, nisi doloremque esse itaque quidem, aliquam asperiores porro illum quas error voluptates maiores, iure impedit fugit fugiat. Eius expedita et atque possimus quas minima consequatur repellendus distinctio quod fuga! Sit blanditiis error, exercitationem officiis commodi aut tenetur vel sapiente, laudantium soluta animi consequuntur odit aspernatur laboriosam facere quia, perspiciatis placeat sunt aliquam nihil corporis nostrum. Repellat, ratione itaque eum distinctio fugiat sit explicabo quas numquam? Sed magni odit obcaecati recusandae harum non asperiores tempore libero. Earum animi est, iure illum praesentium non tempore perferendis ea. Dolorum vitae pariatur molestias quae odit laboriosam optio suscipit voluptate voluptatibus, nostrum neque quisquam id animi libero ab maxime nam iste vero, iure qui nulla, itaque et voluptates officia. Dicta reprehenderit, quos aliquid qui, voluptas, officia eius animi perspiciatis ut laudantium iusto quis. Reiciendis accusantium aliquam aliquid blanditiis, alias, tempore quas odit fuga sunt sapiente sequi nemo labore. In consequuntur nulla omnis rerum repellat ab fugit deleniti quisquam ipsa maiores quae itaque neque accusamus molestias corporis alias explicabo ipsum cumque provident, incidunt magnam dicta.</p>
+        <div className="w-full">
+        <Helmet>
+          <title>Sports Academy | Manage users</title>
+        </Helmet>
+        <h3 className="text-3xl font-semibold my-4">
+          Total Classes: {MyClasses.length}
+        </h3>
+        <div className="overflow-x-auto">
+          <table className="table table-zebra w-full">
+            {/* head */}
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Class Name</th>
+                <th>price</th>
+                <th>Status</th>
+                <th>Enrolled Students</th>
+                <th>Feedback</th>
+                <th>update</th>
+              </tr>
+            </thead>
+            <tbody>
+              {MyClasses.map((Classes, index) => (
+                <tr key={Classes._id}>
+                  <th>{index + 1}</th>
+                  <td>{Classes.className}</td>
+                  <td>{Classes.price}</td>
+                  <td className="ml-4">
+                    <p>{Classes.status}</p>
+                  </td>
+                  <td>
+                    {/* TODO make it dynamic */}
+                    <p>1</p>
+                  </td>
+                  <td>
+                    <p>coming</p>
+                  </td>
+                  <td>
+                    <FaEdit />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
+      </div>
     );
 };
 

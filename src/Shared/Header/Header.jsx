@@ -51,7 +51,7 @@ const Header = () => {
             </ul>
           </div>
           <Link to="/" className="btn btn-ghost normal-case text-xl">
-            <img src="https://i.ibb.co/GTYH3pj/sports-academy.png" className="lg:w-28 lg:h-16 h-12 w-20 ml-12 lg:ml-0" alt="" />
+            <img src="https://i.ibb.co/GTYH3pj/sports-academy.png" className={`lg:w-28 lg:h-16 h-12 w-20 lg:ml-0 ${user ? "ml-2" : "ml-12"}`} alt="" />
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
