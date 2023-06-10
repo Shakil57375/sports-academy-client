@@ -65,7 +65,7 @@ const ManageUser = () => {
           .then((data) => {
             console.log(data);
             refetch();
-            Swal.fire("Deleted!", "User file has been deleted.", "success");
+            Swal.fire("Deleted!", "User file has been deleted.", "successfully");
           });
       }
     });
