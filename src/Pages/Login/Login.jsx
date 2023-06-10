@@ -1,13 +1,14 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { FaGoogle } from "react-icons/fa";
+import { FaEye, FaEyeSlash, FaGoogle } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
 import { AuthContext } from "../../Provider/AuthProvider";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const [show, setShow] = useState(false);
   const { register, handleSubmit, reset } = useForm();
   const { handleLogin, handleGoogleSignIn, setLoader } = useContext(AuthContext);
   const from = location.state?.from?.pathname || "/";
@@ -105,11 +106,27 @@ const Login = () => {
                   <span className="label-text">Password</span>
                 </label>
                 <input
-                  type="password"
+                  type={show ? "text" : "password"}
                   placeholder="password"
                   {...register("password")}
                   className="w-full px-3 py-2 border rounded"
                 />
+                <p
+                  className="absolute top-40 right-11"
+                  onClick={() => setShow(!show)}
+                >
+                  <small>
+                    {show ? (
+                      <span>
+                        <FaEyeSlash className="text-2xl" />
+                      </span>
+                    ) : (
+                      <span>
+                        <FaEye className="text-2xl" />
+                      </span>
+                    )}
+                  </small>
+                </p>
               </div>
               <div className="form-control mt-6">
                 <input

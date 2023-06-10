@@ -5,7 +5,7 @@ const Banner = () => {
   return (
     <div>
       <AwesomeSlider>
-        <div className="relative">
+        <div className="relative mb-10">
           <img
             className="block lg:h-[800px] h-[300px] lg:w-full max-w-screen-[500px]"
             src="https://www.coachesvoice.com/wp-content/webpc-passthru.php?src=https://www.coachesvoice.com/wp-content/uploads/2021/09/HowtoCoachMain.jpg&nocache=1"
