@@ -1,11 +1,11 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../../../Provider/AuthProvider";
-import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import useAxiosSecures from "../../../../hooks/useAxiosSecures";
 const AddClass = () => {
   const { user } = useContext(AuthContext);
-  const [axiosSecure] = useAxiosSecure()
+  const [axiosSecure] = useAxiosSecures()
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = (data) => {
     axiosSecure.post("/classes", {...data, status : "pending"})

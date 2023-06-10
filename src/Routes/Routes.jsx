@@ -13,6 +13,7 @@ import EnrolledClasses from "../Pages/Dashboard/StudentDashboard/EnrolledClasses
 import SelectedClasses from "../Pages/Dashboard/StudentDashboard/SelectedClasses/SelectedClasses";
 import AdminPrivateRoute from "./AdminPrivateRoute";
 import InstructorPrivateRoute from "./InstructorPrivateRoute";
+import Classes from "../Pages/Classes/Classes";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
       {
         path : "/login",
         element : <Login></Login>
+      },
+      {
+        path : "classes",
+        element : <Classes></Classes>
       }
     ],
   },

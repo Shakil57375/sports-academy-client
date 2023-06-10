@@ -1,14 +1,13 @@
-/* eslint-disable react/prop-types */
 import Swal from "sweetalert2";
-import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
-import { useState } from "react";
+import useAxiosSecures from "../../../../hooks/useAxiosSecures";
 
 const ClassCards = ({ singleClass, refetch }) => {
-  const [axiosSecure] = useAxiosSecure();
+  const [axiosSecure] = useAxiosSecures();
   const { image, className, status, _id } = singleClass;
-  const [buttonDisabled, setButtonDisabled] = useState(false);
+  // const [buttonDisabled, setButtonDisabled] = useState(false);
 
   const handleApprove = async (id) => {
+    // setButtonDisabled(true); // Disable buttons
     const res = await axiosSecure.patch(`/classes/approve/${id}`);
     if (res.data.modifiedCount) {
       refetch();
@@ -20,10 +19,10 @@ const ClassCards = ({ singleClass, refetch }) => {
         timer: 1500,
       });
     }
-    setButtonDisabled(true); // Disable buttons
   };
 
   const handleDeny = async (id) => {
+    // setButtonDisabled(true); // Disable buttons
     const res = await axiosSecure.patch(`/classes/deny/${id}`);
     if (res.data.modifiedCount) {
       refetch();
@@ -35,7 +34,6 @@ const ClassCards = ({ singleClass, refetch }) => {
         timer: 1500,
       });
     }
-    setButtonDisabled(true); // Disable buttons
   };
 
   return (
@@ -52,18 +50,20 @@ const ClassCards = ({ singleClass, refetch }) => {
             <button
               onClick={() => handleApprove(_id)}
               className="btn btn-primary"
-              disabled={buttonDisabled} // Disable button based on state
+              disabled = {status === "approved" || status === "denied"}
+              // disabled={buttonDisabled} // Disable button based on state
             >
               Approve
             </button>
             <button
               onClick={() => handleDeny(_id)}
               className="btn btn-primary"
-              disabled={buttonDisabled} // Disable button based on state
+              disabled = {status === "approved" || status === "denied"}
+              // disabled={buttonDisabled} // Disable button based on state
             >
               Deny
             </button>
-            <button className="btn btn-primary">Buy Now</button>
+            <button className="btn btn-primary">Feedback</button>
           </div>
         </div>
       </div>
