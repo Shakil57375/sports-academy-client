@@ -5,7 +5,7 @@ const Classes = () => {
   const [approvedClass] = useApprovedClass();
   console.log(approvedClass);
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 mt-10 gap-5">
+    <div className="grid grid-cols-1 lg:grid-cols-3 my-10 gap-5">
       {approvedClass.map((singleClass) => (
         <div key={singleClass._id}>
             <ApprovedCards singleClass = {singleClass}></ApprovedCards>
