@@ -1,10 +1,20 @@
 /* eslint-disable react/prop-types */
 import Swal from "sweetalert2";
 import useAxiosSecures from "../../../../hooks/useAxiosSecures";
+import { Link } from "react-router-dom";
 
 const ClassCards = ({ singleClass, refetch }) => {
   const [axiosSecure] = useAxiosSecures();
-  const { image, className, status, _id, instructorName, instructorEmail, AvailableSeats, price } = singleClass;
+  const {
+    image,
+    className,
+    status,
+    _id,
+    instructorName,
+    instructorEmail,
+    AvailableSeats,
+    price,
+  } = singleClass;
   console.log(singleClass);
 
   const handleApprove = async (id) => {
@@ -52,18 +62,20 @@ const ClassCards = ({ singleClass, refetch }) => {
             <button
               onClick={() => handleApprove(_id)}
               className="btn btn-primary"
-              disabled = {status === "approved" || status === "denied"}
+              disabled={status === "approved" || status === "denied"}
             >
               Approve
             </button>
             <button
               onClick={() => handleDeny(_id)}
               className="btn btn-primary"
-              disabled = {status === "approved" || status === "denied"}
+              disabled={status === "approved" || status === "denied"}
             >
               Deny
             </button>
-            <button className="btn btn-primary">Feedback</button>
+            <Link to={`/dashboard/sendFeedback/${_id}`}>
+              <button className="btn btn-primary">Feedback</button>
+            </Link>
           </div>
         </div>
       </div>

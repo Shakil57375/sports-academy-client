@@ -3,6 +3,7 @@ import { Link, Outlet } from "react-router-dom";
 import ActiveLink from "../../Components/ActiveLink/ActiveLink";
 import useAdmin from "../../hooks/useAdmin";
 import useInstructor from "../../hooks/useInstructor";
+import { FaWindowClose } from "react-icons/fa";
 
 const Dashboard = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -53,15 +54,20 @@ const Dashboard = () => {
         aria-label="Sidebar"
       >
         <div className="h-full px-3 py-4  overflow-y-auto bg-gray-50 dark:bg-gray-800">
-          <ul className="space-y-2">
+          <ul className="space-y-2 font-medium  border-gray-200 dark:border-gray-700">
             <li className="mb-3">
-              <Link to="/" className="btn btn-ghost normal-case text-xl">
-                <img
-                  src="https://i.ibb.co/GTYH3pj/sports-academy.png"
-                  className="lg:w-28 lg:h-16 h-12 w-20 ml-12 lg:ml-0"
-                  alt=""
-                />
-              </Link>
+              <a
+                href="#"
+                className="flex items-center  p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+              >
+                <Link to="/" className="btn btn-ghost normal-case text-xl">
+                  <img
+                    src="https://i.ibb.co/GTYH3pj/sports-academy.png"
+                    className="lg:w-28 lg:h-16 h-12 w-20 ml-12 lg:ml-0"
+                    alt=""
+                  />
+                </Link>
+              </a>
             </li>
 
             {isAdmin ? (
@@ -111,11 +117,22 @@ const Dashboard = () => {
               </div>
             )}
           </ul>
+          <ul className="pt-4 mt-4 space-y-2 font-medium border-t border-gray-200 dark:border-gray-700">
+            <li onClick={handleCloseDashboard}>
+              <a
+                href="#"
+                className="flex items-center p-2 text-gray-900 transition duration-75 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
+              >
+                <FaWindowClose className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></FaWindowClose>
+                <span className="ml-3">Close</span>
+              </a>
+            </li>
+          </ul>
         </div>
       </aside>
 
-      <div className="p-4 ml- sm:ml-64">
-        <div className="p-4  border-gray-200 w-full">
+      <div className="p-4 sm:ml-64">
+        <div className="">
           <Outlet></Outlet>
         </div>
       </div>

@@ -15,6 +15,8 @@ import AdminPrivateRoute from "./AdminPrivateRoute";
 import InstructorPrivateRoute from "./InstructorPrivateRoute";
 import Classes from "../Pages/Classes/Classes";
 import Instructors from "../Pages/Instructors/Instructors";
+import AdminFeedBack from "../Pages/Dashboard/AdminDashboard/AdminFeedBack/AdminFeedBack";
+import ShowFeedBack from "../Pages/Dashboard/InstractorsDashboard/ShowFeedBack/ShowFeedBack";
 
 const router = createBrowserRouter([
   {
@@ -26,53 +28,99 @@ const router = createBrowserRouter([
         element: <Home></Home>,
       },
       {
-        path : "/register",
-        element : <Register></Register>
+        path: "/register",
+        element: <Register></Register>,
       },
       {
-        path : "/login",
-        element : <Login></Login>
+        path: "/login",
+        element: <Login></Login>,
       },
       {
-        path : "/classes",
-        element : <Classes></Classes>
+        path: "/classes",
+        element: <Classes></Classes>,
       },
       {
-        path : "/instructors",
-        element : <Instructors></Instructors>
-      }
+        path: "/instructors",
+        element: <Instructors></Instructors>,
+      },
     ],
   },
   {
-    path : "/dashboard",
-    element : <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
-    children : [
+    path: "/dashboard",
+    element: (
+      <PrivateRoute>
+        <Dashboard></Dashboard>
+      </PrivateRoute>
+    ),
+    children: [
       {
-        path : "addClass",
-        element : <InstructorPrivateRoute><AddClass></AddClass></InstructorPrivateRoute>
+        path: "addClass",
+        element: (
+          <InstructorPrivateRoute>
+            <AddClass></AddClass>
+          </InstructorPrivateRoute>
+        ),
       },
       {
-        path : "myClass",
-        element : <InstructorPrivateRoute><MyClass></MyClass></InstructorPrivateRoute>
+        path: "myClass",
+        element: (
+          <InstructorPrivateRoute>
+            <MyClass></MyClass>
+          </InstructorPrivateRoute>
+        ),
       },
       {
-        path : "manageUsers",
-        element : <AdminPrivateRoute><ManageUser></ManageUser></AdminPrivateRoute>
+        path: "seeFeedback/:id",
+        element: (
+          <InstructorPrivateRoute>
+            <ShowFeedBack></ShowFeedBack>
+          </InstructorPrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/classes/showFeedback/${params.id}`),
       },
       {
-        path : "manageClasses",
-        element : <AdminPrivateRoute><ManagesClasses></ManagesClasses></AdminPrivateRoute>
+        path: "manageUsers",
+        element: (
+          <AdminPrivateRoute>
+            <ManageUser></ManageUser>
+          </AdminPrivateRoute>
+        ),
       },
       {
-        path : "enrolledClasses",
-        element : <PrivateRoute><EnrolledClasses></EnrolledClasses></PrivateRoute>
+        path: "manageClasses",
+        element: (
+          <AdminPrivateRoute>
+            <ManagesClasses></ManagesClasses>
+          </AdminPrivateRoute>
+        ),
       },
       {
-        path : "selectedClasses",
-        element : <PrivateRoute><SelectedClasses></SelectedClasses></PrivateRoute>
-      }
-    ]
-  }
+        path: "sendFeedback/:id",
+        element: (
+          <AdminPrivateRoute>
+            <AdminFeedBack></AdminFeedBack>
+          </AdminPrivateRoute>
+        ),
+      },
+      {
+        path: "enrolledClasses",
+        element: (
+          <PrivateRoute>
+            <EnrolledClasses></EnrolledClasses>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "selectedClasses",
+        element: (
+          <PrivateRoute>
+            <SelectedClasses></SelectedClasses>
+          </PrivateRoute>
+        ),
+      },
+    ],
+  },
 ]);
 
 export default router;
