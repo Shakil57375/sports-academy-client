@@ -1,13 +1,12 @@
+/* eslint-disable react/prop-types */
 import Swal from "sweetalert2";
 import useAxiosSecures from "../../../../hooks/useAxiosSecures";
 
 const ClassCards = ({ singleClass, refetch }) => {
   const [axiosSecure] = useAxiosSecures();
   const { image, className, status, _id } = singleClass;
-  // const [buttonDisabled, setButtonDisabled] = useState(false);
 
   const handleApprove = async (id) => {
-    // setButtonDisabled(true); // Disable buttons
     const res = await axiosSecure.patch(`/classes/approve/${id}`);
     if (res.data.modifiedCount) {
       refetch();
@@ -22,7 +21,6 @@ const ClassCards = ({ singleClass, refetch }) => {
   };
 
   const handleDeny = async (id) => {
-    // setButtonDisabled(true); // Disable buttons
     const res = await axiosSecure.patch(`/classes/deny/${id}`);
     if (res.data.modifiedCount) {
       refetch();
@@ -51,7 +49,6 @@ const ClassCards = ({ singleClass, refetch }) => {
               onClick={() => handleApprove(_id)}
               className="btn btn-primary"
               disabled = {status === "approved" || status === "denied"}
-              // disabled={buttonDisabled} // Disable button based on state
             >
               Approve
             </button>
@@ -59,7 +56,6 @@ const ClassCards = ({ singleClass, refetch }) => {
               onClick={() => handleDeny(_id)}
               className="btn btn-primary"
               disabled = {status === "approved" || status === "denied"}
-              // disabled={buttonDisabled} // Disable button based on state
             >
               Deny
             </button>

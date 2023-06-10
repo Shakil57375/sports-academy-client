@@ -26,7 +26,7 @@ const Register = () => {
         const user = result.user;
         console.log(user);
         updateUser(data.name, data.photoURL).then(() => {
-          const user = { name: data.name, email: data.email };
+          const user = { name: data.name, email: data.email, image : data.photoURL };
           fetch("http://localhost:5000/users", {
             method: "POST",
             headers: {
@@ -71,6 +71,7 @@ const Register = () => {
             const savedUser = {
                 name: loggerUser.displayName,
                 email: loggerUser.email,
+                image : loggerUser.photoURL
             };
 
             fetch('http://localhost:5000/users', {
