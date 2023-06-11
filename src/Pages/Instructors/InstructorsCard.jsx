@@ -7,9 +7,9 @@ const InstructorsCard = ({ instructor }) => {
     initial = {{opacity: 0}}
     animate = {{opacity: 1}}
     transition={{delay : 1.3, duration : 1}}
-     className="card w-full h-[400px] bg-base-100 shadow-xl">
+     className="card w-full h-[550px] bg-base-100 shadow-xl">
       <figure>
-        <img src={instructor.image} alt="Shoes" className="w-full h-[300px]" />
+        <img src={instructor.image} alt="Shoes" className="w-full h-[500px]" />
       </figure>
       <div className="card-body">
         <h2 className="lg:text-3xl text-xl font-bold text-center">

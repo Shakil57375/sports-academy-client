@@ -52,9 +52,9 @@ const Dashboard = () => {
       </button>
 
       <motion.aside
-        initial={{ x: -350 }}
+        initial={{ x: -1350 }}
         animate={{ x: 0 }}
-        transition={{ delay: 0.4, type: "spring", stiffness: 50 }}
+        transition={{ delay: 1, type: "spring", stiffness: 50 }}
         id="separator-sidebar"
         className={`fixed top-0 lg:left-20 left-0 z-40 w-64 h-screen transition-transform ${
           sidebarOpen ? "" : "-translate-x-full sm:translate-x-0"
@@ -70,6 +70,7 @@ const Dashboard = () => {
               >
                 <Link to="/" className="btn btn-ghost normal-case text-xl">
                   <img
+                  onClick={handleCloseDashboard}
                     src="https://i.ibb.co/GTYH3pj/sports-academy.png"
                     className="lg:w-28 lg:h-16 h-12 w-20 ml-12 lg:ml-0"
                     alt=""
