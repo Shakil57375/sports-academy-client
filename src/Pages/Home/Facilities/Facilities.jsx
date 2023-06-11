@@ -30,7 +30,7 @@ const Facilities = () => {
     {
       title: "Player Recovery",
       image:
-        "https://oakland.edu/Assets/Oakland/newsatou/graphics/2016/Bellin960.jpg",
+        "https://media.npr.org/assets/img/2016/06/22/distraction-7_edited_custom-0410fb522854e0f58ff9540049983c337a09ccdc-s1100-c50.jpg",
     },
   ];
   console.log(facilities);
@@ -44,16 +44,19 @@ const Facilities = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
           {facilities.map((facility) => (
             <>
-              <div className="relative">
-                <div className="relative">
-                  <img
-                    src={facility.image}
-                    className="facility-image h-[300px] w-full opacity-50 hover:opacity-100 transition-opacity duration-300 hover:text-white"
-                    alt=""
-                  />
-                  <h2 className="absolute top-2 text-black font-bold right-3 facility-title hover:text-white text-2xl transition-colors duration-300">
-                    {facility.title}
-                  </h2>
+              <div className="relative group">
+                <img
+                  src={facility.image}
+                  alt=""
+                  className="w-full h-[300px] rounded shadow-xl hover:shadow-2xl"
+                />
+                <div className="flex justify-center items-center opacity-0 bg-gradient-to-t from-cyan-700 to-[rgba(221, 221, 221, 0)] to-opacity-30 duration-500 group-hover:opacity-50 absolute top-0 left-0 h-full w-full"></div>
+                <div className="absolute top-0 duration-200 left-0 w-full h-full flex justify-center items-center opacity-0 hover:opacity-100">
+                  <div className="flex-row text-center">
+                    <h1 className="text-gray-50 font-bold text-lg">
+                      {facility.title}
+                    </h1>
+                  </div>
                 </div>
               </div>
             </>
