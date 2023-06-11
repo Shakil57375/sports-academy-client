@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useContext } from "react";
 import { FaTrashAlt } from "react-icons/fa";
-import {motion} from "framer-motion"
+import { motion } from "framer-motion";
 import { AuthContext } from "../../../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
@@ -37,25 +37,29 @@ const SelectedClasses = () => {
             console.log(data);
             refetch();
             Swal.fire(
-                'Deleted!',
-                `${Classes.className} Class deleted successfully has been deleted.`,
-                'success'
-              )
+              "Deleted!",
+              `${Classes.className} Class deleted successfully has been deleted.`,
+              "success"
+            );
           });
       }
     });
   };
   return (
     <motion.div
-    initial={{ y: 3350 }}
-    animate={{ y: 0 }}
-    transition={{ delay: 1, type: "spring", stiffness: 50 }}
+      initial={{ y: 3350 }}
+      animate={{ y: 0 }}
+      transition={{ delay: 1, type: "spring", stiffness: 50 }}
     >
       <Helmet>
         <title>Sports Academy | Dashboard | Selected Class</title>
       </Helmet>
-      <p className="lg:text-5xl font-bold lg:mb-7 mb-3  text-center text-xl">You have {selectedClasses.length} selected classes</p>
-      
+      <p className="lg:text-5xl font-bold lg:mb-7 mb-3  text-center text-xl">
+        {selectedClasses.length === 0
+          ? "You didn't added any class yet"
+          : `Your have Added  ${selectedClasses.length} class successfully`}
+      </p>
+
       <div className="overflow-x-auto">
         <table className="table table-zebra w-full">
           {/* head */}
@@ -77,21 +81,20 @@ const SelectedClasses = () => {
                 <th>{index + 1}</th>
                 <td>{Classes.className}</td>
                 <td>{Classes.price}</td>
-                <td className="text-center">
-                    {Classes.AvailableSeats}
-                </td>
+                <td className="text-center">{Classes.AvailableSeats}</td>
                 <td>
                   {/* TODO make it dynamic */}
                   {Classes.instructorName}
                 </td>
+                <td>{Classes.instructorEmail}</td>
                 <td>
-                {Classes.instructorEmail}
+                  <button className="my-btn">Pay</button>
                 </td>
                 <td>
-                    <button className="my-btn">Pay</button>
-                </td>
-                <td>
-                    <FaTrashAlt onClick={()=> handleDelete(Classes)} className="text-red-600 w-5 h-5"/>
+                  <FaTrashAlt
+                    onClick={() => handleDelete(Classes)}
+                    className="text-red-600 w-5 h-5"
+                  />
                 </td>
               </tr>
             ))}

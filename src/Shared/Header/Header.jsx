@@ -2,6 +2,8 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { motion } from "framer-motion";
+import useAdmin from "../../hooks/useAdmin";
+import useInstructor from "../../hooks/useInstructor";
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -15,6 +17,8 @@ const Header = () => {
         console.log(error.message);
       });
   };
+  const [isAdmin] = useAdmin()
+  const [isInstructor] = useInstructor()
   const items = (
     <div className="flex flex-col lg:flex-row gap-5">
       <Link className="text-lg text-gray-700 font-Poppins" to="/">
@@ -27,7 +31,7 @@ const Header = () => {
         Classes
       </Link>
       {user && (
-        <Link className="text-lg text-gray-700 font-Poppins" to="/dashboard">
+        <Link className="text-lg text-gray-700 font-Poppins" to = {isAdmin ? "/dashboard/manageUsers" : isInstructor ? "/dashboard/addClass" : "/dashboard/selectedClasses" }>
           Dashboard
         </Link>
       )}

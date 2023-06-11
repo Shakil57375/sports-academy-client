@@ -47,17 +47,17 @@ const AuthProvider = ({ children }) => {
       // console.log(loggedUser);
 
       // get and set token
-      if(currentUser){
-        axios.post("http://localhost:5000/jwt", {email: currentUser.email})
-        .then(data => {
-          // console.log(data.data);
-          localStorage.setItem("access-token", data.data)
-        })
+      if (currentUser) {
+        axios
+          .post("http://localhost:5000/jwt", { email: currentUser.email })
+          .then((data) => {
+            // console.log(data.data);
+            localStorage.setItem("access-token", data.data);
+            setLoader(false);
+          });
+      } else {
+        localStorage.removeItem("access-token");
       }
-      else{
-        localStorage.removeItem("access-token")
-      }
-      setLoader(false);
     });
     return () => {
       unsubscribe();
