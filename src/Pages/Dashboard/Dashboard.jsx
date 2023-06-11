@@ -5,7 +5,12 @@ import { Link, Outlet } from "react-router-dom";
 import ActiveLink from "../../Components/ActiveLink/ActiveLink";
 import useAdmin from "../../hooks/useAdmin";
 import useInstructor from "../../hooks/useInstructor";
-import { FaWindowClose } from "react-icons/fa";
+import {
+  FaChalkboardTeacher,
+  FaHome,
+  FaTv,
+  FaWindowClose,
+} from "react-icons/fa";
 
 const Dashboard = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -55,22 +60,22 @@ const Dashboard = () => {
         initial={{ x: -1350 }}
         animate={{ x: 0 }}
         transition={{ delay: 1, type: "spring", stiffness: 50 }}
-        id="separator-sidebar"
-        className={`fixed top-0 lg:left-20 left-0 z-40 w-64 h-screen transition-transform ${
+        id="separator-sidebar "
+        className={`fixed top-0 left-0 z-40 w-64 h-screen transition-transform ${
           sidebarOpen ? "" : "-translate-x-full sm:translate-x-0"
         }`}
         aria-label="Sidebar"
       >
-        <div className="h-full px-3 py-4  overflow-y-auto bg-gray-50 dark:bg-gray-800">
+        <div className="h-full px-3 py-4 ml:0 lg:ml-20 w-72 overflow-y-auto bg-gray-50 dark:bg-gray-800">
           <ul className="space-y-2 font-medium  border-gray-200 dark:border-gray-700">
-            <li className="mb-10">
+            <li className="mb-3">
               <a
                 href="#"
                 className="flex items-center  p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
               >
                 <Link to="/" className="btn btn-ghost normal-case text-xl">
                   <img
-                  onClick={handleCloseDashboard}
+                    onClick={handleCloseDashboard}
                     src="https://i.ibb.co/GTYH3pj/sports-academy.png"
                     className="lg:w-28 lg:h-16 h-12 w-20 ml-12 lg:ml-0"
                     alt=""
@@ -80,7 +85,7 @@ const Dashboard = () => {
             </li>
 
             {isAdmin ? (
-              <div className="flex flex-col gap-3">
+              <div className="flex flex-col gap-4">
                 <ActiveLink
                   onClick={handleCloseDashboard}
                   to="/dashboard/manageUsers"
@@ -109,7 +114,7 @@ const Dashboard = () => {
                 </ActiveLink>
               </div>
             ) : isInstructor ? (
-              <div className="flex flex-col gap-3">
+              <div className="flex flex-col gap-4">
                 <ActiveLink
                   onClick={handleCloseDashboard}
                   to="/dashboard/addClass"
@@ -138,7 +143,7 @@ const Dashboard = () => {
                 </ActiveLink>
               </div>
             ) : (
-              <div className="flex flex-col gap-3">
+              <div className="flex flex-col gap-4">
                 <ActiveLink
                   onClick={handleCloseDashboard}
                   to="/dashboard/selectedClasses"
@@ -168,14 +173,47 @@ const Dashboard = () => {
               </div>
             )}
           </ul>
-          <ul className="pt-4 mt-4 space-y-2 lg:hidden block font-medium border-t border-gray-200 dark:border-gray-700">
+          <ul className="pt-4 mt-4 space-y-2 font-medium border-t border-gray-200 dark:border-gray-700">
+            <li onClick={handleCloseDashboard}>
+              <ActiveLink to="/">
+                <a
+                  href="#"
+                  className="flex items-center p-2 text-gray-900 transition duration-75 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
+                >
+                  <FaHome className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:group-hover:text-white dark:text-gray-400"></FaHome>
+                  <span className="ml-3">Home</span>
+                </a>
+              </ActiveLink>
+            </li>
+            <li onClick={handleCloseDashboard}>
+              <ActiveLink to="/instructors">
+                <a
+                  href="#"
+                  className="flex items-center p-2 text-gray-900 transition duration-75 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
+                >
+                  <FaChalkboardTeacher className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></FaChalkboardTeacher>
+                  <span className="ml-3">Instructors</span>
+                </a>
+              </ActiveLink>
+            </li>
+            <li onClick={handleCloseDashboard}>
+              <ActiveLink to="/classes">
+                <a
+                  href="#"
+                  className="flex items-center p-2 text-gray-900 transition duration-75 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
+                >
+                  <FaTv className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></FaTv>
+                  <span className="ml-3">Classes</span>
+                </a>
+              </ActiveLink>
+            </li>
             <li onClick={handleCloseDashboard}>
               <a
                 href="#"
                 className="flex items-center p-2 text-gray-900 transition duration-75 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
               >
-                <FaWindowClose className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></FaWindowClose>
-                <span className="ml-3">Close</span>
+                <FaWindowClose className="flex-shrink-0 lg:hidden block w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></FaWindowClose>
+                <button className="ml-3">Close</button>
               </a>
             </li>
           </ul>
@@ -183,13 +221,9 @@ const Dashboard = () => {
       </motion.aside>
 
       <div className="p-4 sm:ml-64">
-        <motion.div
-          initial={{ x: 1550 }}
-          animate={{ x: 0 }}
-          transition={{ delay: 0.2, type: "spring", stiffness: 50 }}
-        >
+        <div className="">
           <Outlet></Outlet>
-        </motion.div>
+        </div>
       </div>
     </>
   );
