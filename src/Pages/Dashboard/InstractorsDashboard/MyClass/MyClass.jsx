@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../../../Provider/AuthProvider";
 import { useQuery } from "@tanstack/react-query";
 import { FaEdit } from "react-icons/fa";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 
 const MyClass = () => {
@@ -21,9 +21,9 @@ const MyClass = () => {
   return (
     <div className="w-full">
       <Helmet>
-        <title>Sports Academy | Manage users</title>
+        <title>Sports Academy | Dashboard | My classes</title>
       </Helmet>
-      <h3 className="text-3xl font-semibold my-4">
+      <h3 className="text-3xl font-bold my-6 text-center">
         Total Classes: {MyClasses.length}
       </h3>
       <div className="overflow-x-auto">

@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import { FaTrashAlt } from "react-icons/fa";
 import "./ManageUser.css";
 import Swal from "sweetalert2";
@@ -75,7 +75,7 @@ const ManageUser = () => {
     <div>
       <div className="w-full">
         <Helmet>
-          <title>Sports Academy | Manage users</title>
+          <title>Sports Academy | Dashboard | Manage users</title>
         </Helmet>
         <h3 className="text-3xl font-semibold my-4">
           Total Users: {users.length}

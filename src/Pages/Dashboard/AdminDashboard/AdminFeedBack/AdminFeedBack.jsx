@@ -2,7 +2,7 @@
 import { useNavigate, useParams } from "react-router-dom";
 import useAxiosSecures from "../../../../hooks/useAxiosSecures";
 import Swal from "sweetalert2";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 
 const AdminFeedBack = () => {

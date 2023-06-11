@@ -1,5 +1,4 @@
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
-
 const Facilities = () => {
   const facilities = [
     {
@@ -44,7 +43,7 @@ const Facilities = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
           {facilities.map((facility) => (
             <>
-              <div className="relative group">
+              <div  className="relative group">
                 <img
                   src={facility.image}
                   alt=""

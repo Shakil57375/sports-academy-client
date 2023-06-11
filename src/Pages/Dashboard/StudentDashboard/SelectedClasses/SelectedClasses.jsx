@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { FaTrashAlt } from "react-icons/fa";
 import { AuthContext } from "../../../../Provider/AuthProvider";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const SelectedClasses = () => {
   const { user } = useContext(AuthContext);
@@ -45,7 +46,10 @@ const SelectedClasses = () => {
   };
   return (
     <div>
-      <p>You have {selectedClasses.length} selected classes</p>
+      <Helmet>
+        <title>Sports Academy | Dashboard | Selected Class</title>
+      </Helmet>
+      <p className="lg:text-5xl font-bold lg:mb-7 mb-3  text-center text-xl">You have {selectedClasses.length} selected classes</p>
       
       <div className="overflow-x-auto">
         <table className="table table-zebra w-full">

@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { AuthContext } from "../../../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 import useAxiosSecures from "../../../../hooks/useAxiosSecures";
+import { Helmet } from "react-helmet-async";
 const AddClass = () => {
   const { user } = useContext(AuthContext);
   const [axiosSecure] = useAxiosSecures();
@@ -22,6 +23,9 @@ const AddClass = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Sports Academy | Dashboard | Add Class</title>
+      </Helmet>
       <h1 className="text-5xl text-center font-bold mb-10">
         Add your class here
       </h1>

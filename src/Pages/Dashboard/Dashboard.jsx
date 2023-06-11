@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import ActiveLink from "../../Components/ActiveLink/ActiveLink";
@@ -22,6 +23,9 @@ const Dashboard = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Sports Academy | Dashboard</title>
+      </Helmet>
       <button
         onClick={handleToggleSidebar}
         data-drawer-target="separator-sidebar"
@@ -55,7 +59,7 @@ const Dashboard = () => {
       >
         <div className="h-full px-3 py-4  overflow-y-auto bg-gray-50 dark:bg-gray-800">
           <ul className="space-y-2 font-medium  border-gray-200 dark:border-gray-700">
-            <li className="mb-3">
+            <li className="mb-10">
               <a
                 href="#"
                 className="flex items-center  p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
@@ -76,13 +80,27 @@ const Dashboard = () => {
                   onClick={handleCloseDashboard}
                   to="/dashboard/manageUsers"
                 >
-                  <span className="flex-1 ml-6 ">manage users</span>
+                  <div className="flex">
+                    <img
+                      src="https://i.ibb.co/7S4N1nK/image-removebg-preview-10.png"
+                      className="w-8 h-6"
+                      alt=""
+                    />
+                    <span className="flex-1 ml-6 ">Manage Users</span>
+                  </div>
                 </ActiveLink>
                 <ActiveLink
                   onClick={handleCloseDashboard}
                   to="/dashboard/manageClasses"
                 >
-                  <span className="flex-1 ml-6 ">Manage Classes</span>
+                  <div className="flex">
+                    <img
+                      src="https://i.ibb.co/X3v4V81/image-removebg-preview-11.png"
+                      className="w-8 h-6"
+                      alt=""
+                    />
+                    <span className="flex-1 ml-6 ">Manage Classes</span>
+                  </div>
                 </ActiveLink>
               </div>
             ) : isInstructor ? (
@@ -91,13 +109,27 @@ const Dashboard = () => {
                   onClick={handleCloseDashboard}
                   to="/dashboard/addClass"
                 >
-                  <span className="flex-1 ml-6 ">Add Class</span>
+                  <div className="flex">
+                    <img
+                      src="https://i.ibb.co/PcjJM3Y/pngtree-vector-add-icon-png-image-956621-removebg-preview.png"
+                      className="w-8 h-6"
+                      alt=""
+                    />
+                    <span className="flex-1 ml-6 ">Add Class</span>
+                  </div>
                 </ActiveLink>
                 <ActiveLink
                   onClick={handleCloseDashboard}
                   to="/dashboard/myClass"
                 >
-                  <span className="flex-1 ml-6 ">My Classes</span>
+                  <div className="flex">
+                    <img
+                      src="https://i.ibb.co/qDdpWMF/image-removebg-preview-9.png"
+                      className="w-8 h-6"
+                      alt=""
+                    />
+                    <span className="flex-1 ml-6 ">My Class</span>
+                  </div>
                 </ActiveLink>
               </div>
             ) : (
@@ -106,13 +138,27 @@ const Dashboard = () => {
                   onClick={handleCloseDashboard}
                   to="/dashboard/selectedClasses"
                 >
-                  <span className="flex-1 ml-6 ">Selected Classes</span>
+                  <div className="flex">
+                    <img
+                      src="https://i.ibb.co/R03DPy1/image-removebg-preview-7.png"
+                      className="w-6 h-6 "
+                      alt=""
+                    />
+                    <span className="flex-1 ml-6 ">Selected Classes</span>
+                  </div>
                 </ActiveLink>
                 <ActiveLink
                   onClick={handleCloseDashboard}
                   to="/dashboard/enrolledClasses"
                 >
-                  <span className="flex-1 ml-6 ">Enrolled Classes</span>
+                  <div className="flex gap-0">
+                    <img
+                      src="https://i.ibb.co/vYB3HCZ/image-removebg-preview-8.png"
+                      alt=""
+                      className="w-8 h-6"
+                    />
+                    <span className="flex-1 ml-6 ">Enrolled Classes</span>
+                  </div>
                 </ActiveLink>
               </div>
             )}

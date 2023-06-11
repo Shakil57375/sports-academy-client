@@ -1,21 +1,22 @@
 /* eslint-disable react/prop-types */
 
 const InstructorsCard = ({ instructor }) => {
-//   console.log(instructor);
-  const {image, name, email} = instructor
-  console.log(image);
+
   return (
-    <div className="card w-96 bg-base-100 shadow-xl">
+    <div className="card w-full h-[400px] bg-base-100 shadow-xl">
       <figure>
-        <img
-          src={image}
-          alt="Shoes"
-          className="w-full h-full"
-        />
+        <img src={instructor.image} alt="Shoes" className="w-full h-[300px]" />
       </figure>
       <div className="card-body">
-        <h2 className="card-title">Instructor Name: {name}</h2>
-        <p>Instructor Email: {email}</p>
+        <h2 className="lg:text-3xl text-xl font-bold text-center">
+          {instructor.name}
+        </h2>
+        <p className="lg:text-2xl text-xl font-medium text-center text-cyan-600">
+          {instructor.course}
+        </p>
+        <p className="lg:text-xl text-lg text-center text-sky-600">
+          {instructor.email}
+        </p>
       </div>
     </div>
   );
