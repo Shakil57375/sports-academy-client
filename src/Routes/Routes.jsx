@@ -17,11 +17,13 @@ import Classes from "../Pages/Classes/Classes";
 import Instructors from "../Pages/Instructors/Instructors";
 import AdminFeedBack from "../Pages/Dashboard/AdminDashboard/AdminFeedBack/AdminFeedBack";
 import ShowFeedBack from "../Pages/Dashboard/InstractorsDashboard/ShowFeedBack/ShowFeedBack";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement : <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
