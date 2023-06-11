@@ -1,5 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { Link, Outlet } from "react-router-dom";
 import ActiveLink from "../../Components/ActiveLink/ActiveLink";
 import useAdmin from "../../hooks/useAdmin";
@@ -50,7 +51,10 @@ const Dashboard = () => {
         </svg>
       </button>
 
-      <aside
+      <motion.aside
+        initial={{ x: -350 }}
+        animate={{ x: 0 }}
+        transition={{ delay: 0.4, type: "spring", stiffness: 50 }}
         id="separator-sidebar"
         className={`fixed top-0 lg:left-20 left-0 z-40 w-64 h-screen transition-transform ${
           sidebarOpen ? "" : "-translate-x-full sm:translate-x-0"
@@ -163,7 +167,7 @@ const Dashboard = () => {
               </div>
             )}
           </ul>
-          <ul className="pt-4 mt-4 space-y-2 font-medium border-t border-gray-200 dark:border-gray-700">
+          <ul className="pt-4 mt-4 space-y-2 lg:hidden block font-medium border-t border-gray-200 dark:border-gray-700">
             <li onClick={handleCloseDashboard}>
               <a
                 href="#"
@@ -175,12 +179,16 @@ const Dashboard = () => {
             </li>
           </ul>
         </div>
-      </aside>
+      </motion.aside>
 
       <div className="p-4 sm:ml-64">
-        <div className="">
+        <motion.div
+          initial={{ x: 1550 }}
+          animate={{ x: 0 }}
+          transition={{ delay: 0.2, type: "spring", stiffness: 50 }}
+        >
           <Outlet></Outlet>
-        </div>
+        </motion.div>
       </div>
     </>
   );

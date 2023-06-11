@@ -1,9 +1,13 @@
 /* eslint-disable react/prop-types */
-
+import {motion} from "framer-motion"
 const InstructorsCard = ({ instructor }) => {
 
   return (
-    <div className="card w-full h-[400px] bg-base-100 shadow-xl">
+    <motion.div 
+    initial = {{opacity: 0}}
+    animate = {{opacity: 1}}
+    transition={{delay : 1.3, duration : 1}}
+     className="card w-full h-[400px] bg-base-100 shadow-xl">
       <figure>
         <img src={instructor.image} alt="Shoes" className="w-full h-[300px]" />
       </figure>
@@ -18,7 +22,7 @@ const InstructorsCard = ({ instructor }) => {
           {instructor.email}
         </p>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

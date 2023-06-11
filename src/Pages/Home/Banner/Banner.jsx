@@ -1,11 +1,16 @@
 // import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 import AwesomeSlider from "react-awesome-slider";
 import "react-awesome-slider/dist/styles.css";
+import { motion } from "framer-motion";
 const Banner = () => {
   return (
-    <div>
+    <motion.div
+      initial={{ y: -3350 }}
+      animate={{ y: 0 }}
+      transition={{ delay: 1, type: "spring", stiffness: 50 }}
+    >
       <AwesomeSlider>
-        <div className="relative mb-10">
+        <div className="relative my-10">
           <img
             className="block lg:h-[800px] h-[300px] lg:w-full max-w-screen-[500px]"
             src="https://www.coachesvoice.com/wp-content/webpc-passthru.php?src=https://www.coachesvoice.com/wp-content/uploads/2021/09/HowtoCoachMain.jpg&nocache=1"
@@ -128,7 +133,7 @@ const Banner = () => {
           </div>
         </div>
       </AwesomeSlider>
-    </div>
+    </motion.div>
   );
 };
 

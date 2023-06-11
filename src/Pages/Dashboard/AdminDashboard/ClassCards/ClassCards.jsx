@@ -47,18 +47,26 @@ const ClassCards = ({ singleClass, refetch }) => {
 
   return (
     <div>
-      <div className="card w-[450px] h-[500px] bg-base-100 shadow-xl ">
+      <div className="card w-full h-[550px] bg-base-100 shadow-xl ">
         <figure className="relative">
-          <img src={image} alt="Shoes" className="h-[250px] " />
+          <img src={image} alt="Shoes" className="h-[250px] w-full" />
         </figure>
         <div className="card-body">
-          <h4 className="absolute top-[188px] -right-2 my-btn"> {status}</h4>
-          <h2 className="card-title">{className}</h2>
-          <p>{instructorName}</p>
-          <p>{instructorEmail}</p>
-          <p>{AvailableSeats}</p>
-          <p>{price}</p>
-          <div className="flex gap-5">
+          <h4 className="absolute top-[210px] -right-2 my-btn"> {status}</h4>
+          <h2 className=" font-bold lg:text-[35px] text-xl mb-2">
+            {className}
+          </h2>
+          <p className="text-xl lg:text-2xl font-semibold">
+            Instructor : {instructorName}
+          </p>
+          <p className="text-base lg:text-xl ">
+            Email : {instructorEmail}
+          </p>
+          <div className="flex justify-between mb-2">
+            <p className="text-base lg:text-xl ">Available Seats: <span className="font-semibold">{AvailableSeats}</span></p>
+            <p className="text-base lg:text-xl text-end">Price: <span className="font-semibold">{price}</span></p>
+          </div>
+          <div className="flex justify-between gap-5">
             <button
               onClick={() => handleApprove(_id)}
               className="btn btn-primary"

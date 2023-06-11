@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../../../../Provider/AuthProvider";
 import { useQuery } from "@tanstack/react-query";
+import { motion } from "framer-motion";
 import { FaEdit } from "react-icons/fa";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
@@ -19,12 +20,18 @@ const MyClass = () => {
   });
   console.log(MyClasses);
   return (
-    <div className="w-full">
+    <motion.div
+    initial={{ y: -3350 }}
+    animate={{ y: 0 }}
+    transition={{ delay: 1, type: "spring", stiffness: 50 }}
+     className="w-full">
       <Helmet>
         <title>Sports Academy | Dashboard | My classes</title>
       </Helmet>
-      <h3 className="text-3xl font-bold my-6 text-center">
-        Total Classes: {MyClasses.length}
+      <h3 className="text-3xl font-bold my-6 text-center text-cyan-500">
+        {
+          MyClasses.length < 0 ? "You didn't added any class yet" : `Your have Added   ${MyClasses.length} class successfully`
+        }
       </h3>
       <div className="overflow-x-auto">
         <table className="table table-zebra w-full">
@@ -66,7 +73,7 @@ const MyClass = () => {
           </tbody>
         </table>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

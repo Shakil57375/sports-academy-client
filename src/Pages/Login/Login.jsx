@@ -2,6 +2,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash, FaGoogle } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { useContext, useState } from "react";
@@ -10,7 +11,8 @@ const Login = () => {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const { register, handleSubmit, reset } = useForm();
-  const { handleLogin, handleGoogleSignIn, setLoader } = useContext(AuthContext);
+  const { handleLogin, handleGoogleSignIn, setLoader } =
+    useContext(AuthContext);
   const from = location.state?.from?.pathname || "/";
   const onSubmit = (data) => {
     handleLogin(data.email, data.password)
@@ -30,47 +32,47 @@ const Login = () => {
         console.log(error.message);
       });
   };
-  const  handleGoogleLogin = () => {
+  const handleGoogleLogin = () => {
     handleGoogleSignIn()
-        .then(result => {
-            const loggerUser = result.user
-            console.log(loggerUser);
+      .then((result) => {
+        const loggerUser = result.user;
+        console.log(loggerUser);
 
-            const savedUser = {
-                name: loggerUser.displayName,
-                email: loggerUser.email,
-                image : loggerUser.photoURL
-            };
+        const savedUser = {
+          name: loggerUser.displayName,
+          email: loggerUser.email,
+          image: loggerUser.photoURL,
+        };
 
-            fetch('http://localhost:5000/users', {
-                method: 'POST',
-                headers: {
-                    'content-type': 'application/json'
-                },
-                body: JSON.stringify(savedUser)
-            })
-                .then((response) => response.json())
-                .then(() => {
-                    Swal.fire({
-                        position: 'center',
-                        icon: 'success',
-                        title: 'User successfully login by google.',
-                        showConfirmButton: true,
-                        // timer: 1500
-                    });
-                    navigate(from, { replace: true });
-                })
-                .catch((error) => {
-                  setLoader(false);
-                    console.log(error);
-                })
+        fetch("http://localhost:5000/users", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(savedUser),
         })
-        .catch(error => {
-          setLoader(false);
-            const ErrorMessage = error.message;
-            console.log(ErrorMessage)
-        })
-}
+          .then((response) => response.json())
+          .then(() => {
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: "User successfully login by google.",
+              showConfirmButton: true,
+              // timer: 1500
+            });
+            navigate(from, { replace: true });
+          })
+          .catch((error) => {
+            setLoader(false);
+            console.log(error);
+          });
+      })
+      .catch((error) => {
+        setLoader(false);
+        const ErrorMessage = error.message;
+        console.log(ErrorMessage);
+      });
+  };
   return (
     <>
       <Helmet>
@@ -78,7 +80,12 @@ const Login = () => {
       </Helmet>
       <div className="bg-base-200 my-14 p-10">
         <div className="flex flex-col lg:flex-row justify-center items-center gap-5 lg:gap-10">
-          <div className="text-center lg:ml-20 ml-0 w-full md:w-1/2 lg:my-0 my-5 lg:text-left">
+          <motion.div
+            initial={{ x: -1550 }}
+            animate={{ x: 0 }}
+            transition={{ delay: 0.4, type: "spring", stiffness: 50 }}
+            className="text-center lg:ml-20 ml-0 w-full md:w-1/2 lg:my-0 my-5 lg:text-left"
+          >
             <h1 className="text-5xl text-center font-bold lg:mb-16 mb-5">
               Login here!
             </h1>
@@ -86,8 +93,13 @@ const Login = () => {
               src="https://i.ibb.co/BL491Sn/image-removebg-preview-4.png"
               alt=""
             />
-          </div>
-          <div className="card flex-shrink-0 md:w-1/2 w-full m-10 shadow-2xl bg-base-100">
+          </motion.div>
+          <motion.div
+            initial={{ x: 1550 }}
+            animate={{ x: 0 }}
+            transition={{ delay: 0.2, type: "spring", stiffness: 50 }}
+            className="card flex-shrink-0 md:w-1/2 w-full m-10 shadow-2xl bg-base-100"
+          >
             <form onSubmit={handleSubmit(onSubmit)} className="card-body">
               <div className="form-control">
                 <label className="label">
@@ -129,8 +141,13 @@ const Login = () => {
                 </p>
               </div>
               <div className="form-control mt-6">
-                <input
-                  className="btn btn-primary"
+                <motion.input
+                  whileHover={{
+                    scale: 1.1,
+                    boxShadow: "0px 0px 8px rgba(255,255,255)",
+                    textShadow: "0px 0px 8px rgba(255,255,255)",
+                  }}
+                  className="my-btn"
                   type="submit"
                   value="Login"
                 />
@@ -151,7 +168,7 @@ const Login = () => {
             >
               <FaGoogle className="text-red-600 "></FaGoogle>
             </button>
-          </div>
+          </motion.div>
         </div>
       </div>
     </>

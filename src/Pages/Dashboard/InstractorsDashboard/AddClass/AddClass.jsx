@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../../../Provider/AuthProvider";
 import Swal from "sweetalert2";
@@ -22,7 +23,11 @@ const AddClass = () => {
   };
 
   return (
-    <div>
+    <motion.div
+    initial={{ y: 3350 }}
+    animate={{ y: 0 }}
+    transition={{ delay: 1, type: "spring", stiffness: 50 }}
+    >
       <Helmet>
         <title>Sports Academy | Dashboard | Add Class</title>
       </Helmet>
@@ -92,7 +97,7 @@ const AddClass = () => {
           <input className="my-btn " value="Add Your Class" type="submit" />
         </div>
       </form>
-    </div>
+    </motion.div>
   );
 };
 

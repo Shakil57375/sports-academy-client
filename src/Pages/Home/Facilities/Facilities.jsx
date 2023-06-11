@@ -1,4 +1,5 @@
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
+import {motion} from "framer-motion"
 const Facilities = () => {
   const facilities = [
     {
@@ -34,7 +35,11 @@ const Facilities = () => {
   ];
   console.log(facilities);
   return (
-    <div className="mb-20">
+    <motion.div
+    initial = {{x: -2250}}
+    animate = {{x: 0}}
+    transition={{delay : 2, duration : 0.5}}
+     className="mb-20">
       <div>
         <SectionTitle
           title={"Premier Training Facilities"}
@@ -62,7 +67,7 @@ const Facilities = () => {
           ))}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

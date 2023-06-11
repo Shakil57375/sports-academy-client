@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useContext } from "react";
 import { FaTrashAlt } from "react-icons/fa";
+import {motion} from "framer-motion"
 import { AuthContext } from "../../../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
@@ -45,7 +46,11 @@ const SelectedClasses = () => {
     });
   };
   return (
-    <div>
+    <motion.div
+    initial={{ y: 3350 }}
+    animate={{ y: 0 }}
+    transition={{ delay: 1, type: "spring", stiffness: 50 }}
+    >
       <Helmet>
         <title>Sports Academy | Dashboard | Selected Class</title>
       </Helmet>
@@ -93,7 +98,7 @@ const SelectedClasses = () => {
           </tbody>
         </table>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

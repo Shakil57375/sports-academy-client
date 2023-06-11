@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
 import { FaTrashAlt } from "react-icons/fa";
 import "./ManageUser.css";
@@ -72,7 +73,11 @@ const ManageUser = () => {
   };
 
   return (
-    <div>
+    <motion.div 
+    initial={{ y: -3350 }}
+      animate={{ y: 0 }}
+      transition={{ delay: 0.5, type: "spring", stiffness: 50 }}
+    >
       <div className="w-full">
         <Helmet>
           <title>Sports Academy | Dashboard | Manage users</title>
@@ -147,7 +152,7 @@ const ManageUser = () => {
           </table>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
