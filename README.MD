@@ -23,5 +23,4 @@
             - After clicking to the dashboard you will see a sidebar and also the content of the sidebar. In the sidebar content as an instructor you will have Add a class page where you can add your classes and a My class page where you will see the classes you have added and you can see your class status whether the admin approved your class or not. if the admin approve your classes you will see the approved status and if the admin deny your classes you will see the deny status and I have also added added a feedback column where a you can see the feedback given by the admin for you.
         - If the you login in as a Admin:
             - After clicking to the dashboard you will see a sidebar and also the content of the sidebar. In the sidebar content as an admin you will have to manage the user page where you can see all the users logged in your website and then you can make someone admin or instructor and also you can delete an user. You will also see a managed classes page where you will see all the classes added by the instructors where you can approve a class or deny a class if you deny a class you can give feedback to the instructors.
-            <!-- TODO put the live site link -->
-live site link: 
+live site link: https://sports-academy-special.web.app/

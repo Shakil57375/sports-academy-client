@@ -59,8 +59,7 @@ const MyClass = () => {
                   <p>{Classes.status}</p>
                 </td>
                 <td>
-                  {/* TODO make it dynamic */}
-                  <p>1</p>
+                  <p className="ml-10">{Classes.enrolled}</p>
                 </td>
                 <td>
                   <Link to={`/dashboard/seeFeedback/${Classes._id}`}>

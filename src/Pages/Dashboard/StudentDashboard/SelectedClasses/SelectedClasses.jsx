@@ -73,7 +73,6 @@ const SelectedClasses = () => {
                 <td>{Classes.price}</td>
                 <td className="text-center">{Classes.AvailableSeats}</td>
                 <td>
-                  {/* TODO make it dynamic */}
                   {Classes.instructorName}
                 </td>
                 <td>{Classes.instructorEmail}</td>
