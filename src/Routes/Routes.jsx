@@ -107,7 +107,7 @@ const router = createBrowserRouter([
           </InstructorPrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/classes/showFeedback/${params.id}`),
+          fetch(`https://summer-camp-school-server-shakil57375.vercel.app/classes/showFeedback/${params.id}`),
       },
       // student routes
       {

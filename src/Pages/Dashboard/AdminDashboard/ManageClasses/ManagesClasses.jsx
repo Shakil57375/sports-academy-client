@@ -7,7 +7,7 @@ const ManagesClasses = () => {
   const { data: classes = [], refetch } = useQuery({
     queryKey: ["instructor"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/classes");
+      const res = await fetch("https://summer-camp-school-server-shakil57375.vercel.app/classes");
       return res.json();
     },
   });

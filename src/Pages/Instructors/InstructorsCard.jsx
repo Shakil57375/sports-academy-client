@@ -12,13 +12,13 @@ const InstructorsCard = ({ instructor }) => {
         <img src={instructor.image} alt="Shoes" className="w-full h-[500px]" />
       </figure>
       <div className="card-body">
-        <h2 className="lg:text-3xl text-xl font-Poppinsfont-bold text-center">
+        <h2 className="lg:text-3xl text-xl font-Poppins font-bold text-center">
           {instructor.name}
         </h2>
-        <p className="lg:text-2xl text-xl font-Poppinsfont-medium text-center text-cyan-600">
+        <p className="lg:text-2xl text-xl font-Poppins font-medium text-center text-cyan-600">
           {instructor.course}
         </p>
-        <p className="lg:text-xl font-Poppinstext-lg font-Poppins text-center text-sky-600">
+        <p className="lg:text-xl font-Poppins text-lg font-Poppins text-center text-sky-600">
           {instructor.email}
         </p>
       </div>

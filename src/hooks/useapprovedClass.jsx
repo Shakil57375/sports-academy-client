@@ -3,7 +3,7 @@ const useApprovedClass = () => {
   const {data : approvedClass = [], refetch, isLoading : loading} = useQuery({
     queryKey : ["approvedClass"],
     queryFn : async() =>{
-      const res = await fetch("http://localhost:5000/approvedClass");
+      const res = await fetch("https://summer-camp-school-server-shakil57375.vercel.app/approvedClass");
       return res.json()
     }
   })
