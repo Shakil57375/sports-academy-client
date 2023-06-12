@@ -57,9 +57,6 @@ const Register = () => {
           .then((result) => {
             console.log(result.user);
           })
-          .catch((error) => {
-            console.log(error.message);
-          });
         navigate("/login");
       })
       .catch((error) => {

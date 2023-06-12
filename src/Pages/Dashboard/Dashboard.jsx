@@ -9,6 +9,7 @@ import {
   FaHome,
   FaTv,
   FaWindowClose,
+  FaMoneyCheck
 } from "react-icons/fa";
 
 const DashboardLayout = () => {
@@ -61,7 +62,7 @@ const DashboardLayout = () => {
         }`}
         aria-label="Sidebar"
       >
-        <div className="h-full px-3 z-10 overflow-y-auto bg-gray-50 dark:bg-gray-800">
+        <div className="h-full px-8 z-10 overflow-y-auto bg-gray-50 dark:bg-gray-800">
           <ul className="space-y-2 font-medium  border-gray-200 dark:border-gray-700">
             <li className="mb-6">
               <a
@@ -170,11 +171,7 @@ const DashboardLayout = () => {
                   to="/dashboard/paymentHistory"
                 >
                   <div className="flex gap-0">
-                    <img
-                      src="https://i.ibb.co/vYB3HCZ/image-removebg-preview-8.png"
-                      alt=""
-                      className="w-8 h-6"
-                    />
+                    <FaMoneyCheck className="w-8 h-6"></FaMoneyCheck>
                     <span className="flex-1 ml-6 ">Payment History</span>
                   </div>
                 </ActiveLink>

@@ -7,7 +7,7 @@ import SectionTitle from "../../../../Components/SectionTitle/SectionTitle";
 const PaymentHistory = () => {
   const { user } = useContext(AuthContext);
   const [axiosSecure] = useAxiosSecures();
-  const { data: payments = [], refetch } = useQuery({
+  const { data: payments = [] } = useQuery({
     queryKey: ["paymentHistory"],
     queryFn: async () => {
       const res = await axiosSecure(`/paymentSuccessfully/${user?.email}`);
@@ -76,35 +76,35 @@ const PaymentHistory = () => {
 
                 <td className="px-6 py-4 ">
                   {/* for toy price */}
-                  <button className="block rounded bg-gradient-to-r from-teal-100 to-amber-100 w-full px-3 py-3 text-sm font-mono text-black shadow">
+                  <button className="rounded 0 w-full px-3 py-3 text-sm">
                     {sclass?.email}
                   </button>
                 </td>
 
                 <td className="px-6 py-4 ">
                   {/* for toy price */}
-                  <button className="block rounded bg-gradient-to-r from-teal-100 to-amber-100 w-full px-3 py-3 text-sm font-mono text-black shadow">
+                  <button className="rounded 0 w-full px-3 py-3 text-sm">
                     {sclass?.enrolledClassName}
                   </button>
                 </td>
 
                 <td className="px-6 py-4 ">
                   {/* for toy price */}
-                  <button className="block rounded bg-gradient-to-r from-teal-100 to-amber-100 w-full px-3 py-3 text-sm font-mono text-black shadow">
+                  <button className="rounded 0 w-full px-3 py-3 text-sm">
                     {sclass?.date}
                   </button>
                 </td>
 
                 <td className="px-6 py-4 ">
                   {/* for toy price */}
-                  <button className="block rounded bg-gradient-to-r from-teal-100 to-amber-100 w-full px-3 py-3 text-sm font-mono text-black shadow">
+                  <button className="rounded 0 w-full px-3 py-3 text-sm">
                     ${sclass?.price}
                   </button>
                 </td>
 
                 <td className="px-6 py-4 ">
                   {/* for enrol */}
-                  <button className="block rounded bg-gradient-to-r from-emerald-300 to-emerald-100 w-full px-3 py-3 text-sm font-mono text-black shadow">
+                  <button className="rounded 0 w-full px-3 py-3 text-sm my-btn">
                     Successful
                   </button>
                 </td>

@@ -27,7 +27,7 @@ const EnrolledClasses = () => {
         <title>Sports Academy | Dashboard | Enrolled Classes</title>
       </Helmet>
       <SectionTitle
-        title={"EnrolledClasses"}
+        title={"Enrolled Classes"}
         subTitle={"Your Enrolled Classes"}
       ></SectionTitle>
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg mb-7 lg:mb-10 mx-2 lg:mx-5">
@@ -83,28 +83,28 @@ const EnrolledClasses = () => {
 
                 <td className="px-6 py-4 ">
                   {/* for toy price */}
-                  <button className="block rounded bg-gradient-to-r from-teal-100 to-amber-100 w-full px-3 py-3 text-sm font-mono text-black shadow">
+                  <button className=" rounded text-black ">
                     {selectedClass?.email}
                   </button>
                 </td>
 
                 <td className="px-6 py-4 ">
                   {/* for toy price */}
-                  <button className="block rounded bg-gradient-to-r from-teal-100 to-amber-100 w-full px-3 py-3 text-sm font-mono text-black shadow">
+                  <button className=" rounded 0 w-full px-3 py-3 text-sm text-black ">
                     {selectedClass?.instructorName}
                   </button>
                 </td>
 
                 <td className="px-6 py-4 ">
                   {/* for toy price */}
-                  <button className="block rounded bg-gradient-to-r from-teal-100 to-amber-100 w-full px-3 py-3 text-sm font-mono text-black shadow">
+                  <button className="rounded 0 w-full px-3 py-3 text-sm">
                     ${selectedClass?.price}
                   </button>
                 </td>
 
                 <td className="px-6 py-4 ">
                   {/* for enrol */}
-                  <button className="block rounded bg-gradient-to-r from-emerald-300 to-emerald-100 w-full px-3 py-3 text-sm font-mono text-black shadow">
+                  <button className="rounded 0 w-full px-3 py-3 text-sm my-btn">
                     Successful
                   </button>
                 </td>
