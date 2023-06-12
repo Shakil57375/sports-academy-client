@@ -98,7 +98,7 @@ const Header = () => {
           <Link to="/" className="btn btn-ghost normal-case text-xl">
             <img
               src="https://i.ibb.co/GTYH3pj/sports-academy.png"
-              className={`lg:w-28 lg:h-16 h-12 w-20 lg:ml-0 ${
+              className={`lg:w-28 lg:h-16 h-8 w-12 lg:ml-0 ${
                 user ? "ml-2" : "ml-12"
               }`}
               alt=""
@@ -109,28 +109,28 @@ const Header = () => {
           <ul className="menu menu-horizontal px-1">{items}</ul>
         </div>
         <div className="navbar-end">
-          <div>
+          <div >
             {user ? (
               <>
                 <div className="flex gap-2 cursor-pointer">
                   <span className="text-white mr-0 lg:mr-3 ">
-                    {" "}
                     <img
                       src={user.photoURL}
                       title={user.displayName ? user.displayName : " "}
                       width={50}
                       height={50}
-                      className="rounded-full"
+                      className="rounded-full lg:mt-0 mr-2 mt-3"
                       alt=""
                     />
                   </span>
                   <motion.div
+                  
                     whileHover={{
                       scale: 1.1,
                       boxShadow: "0px 0px 8px rgba(255,255,255)",
                       textShadow: "0px 0px 8px rgba(255,255,255)",
                     }}
-                    className="my-btn btn"
+                    className="my-btn  md:static relative left-2"
                     onClick={handleLogOut}
                   >
                     Sign Out
@@ -146,7 +146,7 @@ const Header = () => {
                       boxShadow: "0px 0px 8px rgba(255,255,255)",
                       textShadow: "0px 0px 8px rgba(255,255,255)",
                     }}
-                    className="btn my-btn"
+                    className="my-btn px-6  md:static relative left-2"
                   >
                     Login
                   </motion.div>
@@ -162,7 +162,7 @@ const Header = () => {
             onChange={handleToggle} />
 
             <svg
-              className="swap-on fill-current w-10 h-10"
+              className="swap-on fill-current  w-6 h-6 lg:w-10 lg:h-10"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
             >
@@ -170,7 +170,7 @@ const Header = () => {
             </svg>
 
             <svg
-              className="swap-off fill-current w-10 h-10"
+              className="swap-off fill-current w-6 h-6 lg:w-10 lg:h-10"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
             >

@@ -82,7 +82,7 @@ const ClassCards = ({ singleClass, refetch }) => {
               Deny
             </button>
             <Link to={`/dashboard/sendFeedback/${_id}`}>
-              <button className="btn btn-primary">Feedback</button>
+              <button disabled = {status === "approved" || status === "pending"} className="btn btn-primary">Feedback</button>
             </Link>
           </div>
         </div>

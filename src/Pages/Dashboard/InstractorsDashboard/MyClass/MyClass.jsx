@@ -30,7 +30,7 @@ const MyClass = () => {
       </Helmet>
       <h3 className="text-3xl font-bold my-6 text-center text-cyan-500">
         {
-          MyClasses.length < 0 ? "You didn't added any class yet" : `Your have Added   ${MyClasses.length} class successfully`
+          MyClasses.length === 0 ? "You didn't added any class yet" : `Your have Added   ${MyClasses.length} class successfully`
         }
       </h3>
       <div className="overflow-x-auto">

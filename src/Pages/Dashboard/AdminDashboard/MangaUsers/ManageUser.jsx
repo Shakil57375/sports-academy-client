@@ -82,7 +82,7 @@ const ManageUser = () => {
         <Helmet>
           <title>Sports Academy | Dashboard | Manage users</title>
         </Helmet>
-        <h3 className="text-3xl font-semibold my-4 text-center mb-10 font-bold">
+        <h3 className="text-3xl my-4 text-center mb-10 font-bold">
           Total Users: {users.length}
         </h3>
         <div className="overflow-x-auto">
