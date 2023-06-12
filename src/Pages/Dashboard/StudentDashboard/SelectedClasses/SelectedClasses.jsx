@@ -4,10 +4,12 @@ import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import useSelectedClasses from "../../../../hooks/useSelectedClasses";
+import { useContext } from "react";
+import { AuthContext } from "../../../../Provider/AuthProvider";
 
 const SelectedClasses = () => {
   const [selectedClasses,refetch] = useSelectedClasses();
-  console.log(selectedClasses);
+  const {user} = useContext(AuthContext)
   const handleDelete = (Classes) => {
     Swal.fire({
       title: "Are you sure?",
@@ -44,9 +46,10 @@ const SelectedClasses = () => {
       <Helmet>
         <title>Sports Academy | Dashboard | Selected Class</title>
       </Helmet>
-      <p className="lg:text-5xl font-Marcellus font-bold lg:mb-7 mb-3  text-center text-xl">
+      <p className="text-center text-4xl font-bold mb-4 font-Marcellus mt-3">Welcome {user.displayName}</p>
+      <p className="lg:text-5xl font-Marcellus font-bold lg:mb-7 mb-3 text-cyan-500 text-center text-xl">
         {selectedClasses.length === 0
-          ? "You didn't added any class yet"
+          ? "You didn't added any class yet add know!"
           : `Your have Added  ${selectedClasses.length} class successfully`}
       </p>
 

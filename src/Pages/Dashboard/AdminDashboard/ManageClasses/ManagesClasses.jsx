@@ -2,8 +2,11 @@ import { Helmet } from "react-helmet-async";
 import ClassCards from "../ClassCards/ClassCards";
 import { motion } from "framer-motion";
 import { useQuery } from "@tanstack/react-query";
+import { useContext } from "react";
+import { AuthContext } from "../../../../Provider/AuthProvider";
 
 const ManagesClasses = () => {
+  const {user} = useContext(AuthContext)
   const { data: classes = [], refetch } = useQuery({
     queryKey: ["instructor"],
     queryFn: async () => {
@@ -18,7 +21,8 @@ const ManagesClasses = () => {
       animate={{ y: 0 }}
       transition={{ delay: 0.5, type: "spring", stiffness: 50 }}
     >
-      <h1 className=" font-bold text-center text-2xl lg:text-5xl font-Marcellus mb-12">
+      <p className="text-center text-4xl font-bold mb-4 font-Marcellus mt-3">Welcome Back {user.displayName} manage the classes</p>
+      <h1 className=" font-bold text-center text-2xl text-cyan-500 lg:text-5xl font-Marcellus mb-12">
         Manage Classes
       </h1>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">

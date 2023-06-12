@@ -17,7 +17,7 @@ const PaymentHistory = () => {
   return (
     <div>
       <SectionTitle
-        title={"payment History"}
+        title={"Payment History"}
         subTitle={"Your Payment History"}
       ></SectionTitle>
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg mb-7 lg:mb-10 mx-2 lg:mx-5">

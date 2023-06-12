@@ -30,11 +30,13 @@ const MyClass = () => {
       <Helmet>
         <title>Sports Academy | Dashboard | My classes</title>
       </Helmet>
-      <h3 className="text-3xl font-bold my-6 text-center text-cyan-500">
+      <p className="text-center text-4xl font-bold font-Marcellus mt-3">Welcome back {user.displayName}</p>
+      <h3 className="text-5xl font-Marcellus font-bold my-6 text-center text-cyan-500">
         {
           MyClasses.length === 0 ? "You didn't added any class yet" : `Your have Added   ${MyClasses.length} class successfully`
         }
       </h3>
+      
       <div className="overflow-x-auto">
         <table className="table table-zebra w-full">
           {/* head */}
@@ -63,7 +65,7 @@ const MyClass = () => {
                 </td>
                 <td>
                   <Link to={`/dashboard/seeFeedback/${Classes._id}`}>
-                    <button className="btn btn-primary">Feedback</button>
+                    <button className="my-btn">Feedback</button>
                   </Link>
                 </td>
                 <td>

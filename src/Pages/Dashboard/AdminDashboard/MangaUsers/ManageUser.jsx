@@ -84,8 +84,9 @@ const ManageUser = () => {
         <Helmet>
           <title>Sports Academy | Dashboard | Manage users</title>
         </Helmet>
-        <h3 className="text-3xl my-4 text-center mb-10 font-bold">
-          Total Users: {users.length}
+        <p className="text-center text-4xl font-bold mb-4 font-Marcellus mt-3">Welcome Back {user.displayName} Manage Your Users</p>
+        <h3 className="text-5xl my-4 text-cyan-500 text-center mb-10 font-bold">
+          You have: {users.length} users
         </h3>
         <div className="overflow-x-auto">
           <table className="table table-zebra w-full">

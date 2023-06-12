@@ -51,7 +51,8 @@ const AddClass = () => {
       <Helmet>
         <title>Sports Academy | Dashboard | Add Class</title>
       </Helmet>
-      <h1 className="text-5xl font-Marcellus text-center font-bold mb-10">
+      <p className="text-center text-4xl font-bold font-Marcellus mt-3 mb-3">Welcome back {user.displayName}</p>
+      <h1 className="text-5xl font-Marcellus text-center text-cyan-500 font-bold mb-10">
         Add your class here
       </h1>
       <form onSubmit={handleSubmit(onSubmit)}>
