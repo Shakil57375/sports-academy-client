@@ -31,64 +31,64 @@ const AddClass = () => {
       <Helmet>
         <title>Sports Academy | Dashboard | Add Class</title>
       </Helmet>
-      <h1 className="text-5xl text-center font-bold mb-10">
+      <h1 className="text-5xl font-Marcellus text-center font-bold mb-10">
         Add your class here
       </h1>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="md:flex block justify-between gap-5 items-center">
           <div className="lg:w-1/2 w-full">
-            <label className="text-lg font-semibold">Class Name :</label>
+            <label className="text-lg font-Poppins font-semibold">Class Name :</label>
             <input
               placeholder="Type here"
-              className="input mt-2 mr-6 input-bordered input-accent w-full  transition duration-300 focus:ring-2 focus:outline-none focus:ring-teal-300 font-medium rounded-lg text-lg px-5 py-2.5 mb-2"
+              className="input mt-2 mr-6 input-bordered input-accent w-full  transition duration-300 focus:ring-2 focus:outline-none focus:ring-teal-300 font-medium rounded-lg text-lg font-Poppins px-5 py-2.5 mb-2"
               {...register("className")}
             />
           </div>
           <div className="lg:w-1/2 w-full">
-            <label className="text-lg font-semibold">Class image url :</label>
+            <label className="text-lg font-Poppins font-semibold">Class image url :</label>
             <input
               placeholder="Toys Photo URL"
-              className="input mt-2 mr-6 input-bordered input-accent w-full  transition duration-300 focus:ring-2 focus:outline-none focus:ring-teal-300 font-medium rounded-lg text-lg px-5 py-2.5 mb-2"
+              className="input mt-2 mr-6 input-bordered input-accent w-full  transition duration-300 focus:ring-2 focus:outline-none focus:ring-teal-300 font-medium rounded-lg text-lg font-Poppins px-5 py-2.5 mb-2"
               {...register("image")}
             />
           </div>
         </div>
         <div className="md:flex block justify-between mt-3 gap-5 items-center">
           <div className="lg:w-1/2 w-full">
-            <label className="text-lg font-semibold">Instructor Name :</label>
+            <label className="text-lg font-Poppins font-semibold">Instructor Name :</label>
             <input
               placeholder="Type here"
               readOnly
               defaultValue={user?.displayName}
-              className="input mt-2 mr-6 input-bordered input-accent w-full  transition duration-300 focus:ring-2 focus:outline-none focus:ring-teal-300 font-medium rounded-lg text-lg px-5 py-2.5 mb-2"
+              className="input mt-2 mr-6 input-bordered input-accent w-full  transition duration-300 focus:ring-2 focus:outline-none focus:ring-teal-300 font-medium rounded-lg text-lg font-Poppins px-5 py-2.5 mb-2"
               {...register("instructorName")}
             />
           </div>
           <div className="lg:w-1/2 w-full">
-            <label className="text-lg font-semibold">Instructor Email :</label>
+            <label className="text-lg font-Poppins font-semibold">Instructor Email :</label>
             <input
               placeholder="Type here"
               readOnly
               defaultValue={user?.email}
-              className="input mt-2 mr-6 input-bordered input-accent w-full  transition duration-300 focus:ring-2 focus:outline-none focus:ring-teal-300 font-medium rounded-lg text-lg px-5 py-2.5 mb-2"
+              className="input mt-2 mr-6 input-bordered input-accent w-full  transition duration-300 focus:ring-2 focus:outline-none focus:ring-teal-300 font-medium rounded-lg text-lg font-Poppins px-5 py-2.5 mb-2"
               {...register("instructorEmail")}
             />
           </div>
         </div>
         <div className="md:flex block justify-between mt-3 gap-5 items-center">
           <div className="lg:w-1/2 w-full">
-            <label className="text-lg font-semibold">Price :</label>
+            <label className="text-lg font-Poppins font-semibold">Price :</label>
             <input
               placeholder="Type here"
-              className="input mt-2 mr-6 input-bordered input-accent w-full  transition duration-300 focus:ring-2 focus:outline-none focus:ring-teal-300 font-medium rounded-lg text-lg px-5 py-2.5 mb-2"
+              className="input mt-2 mr-6 input-bordered input-accent w-full  transition duration-300 focus:ring-2 focus:outline-none focus:ring-teal-300 font-medium rounded-lg text-lg font-Poppins px-5 py-2.5 mb-2"
               {...register("price")}
             />
           </div>
           <div className="lg:w-1/2 w-full">
-            <label className="text-lg font-semibold">Available seats :</label>
+            <label className="text-lg font-Poppins font-semibold">Available seats :</label>
             <input
               placeholder="Type here"
-              className="input mt-2 mr-6 input-bordered input-accent w-full  transition duration-300 focus:ring-2 focus:outline-none focus:ring-teal-300 font-medium rounded-lg text-lg px-5 py-2.5 mb-2"
+              className="input mt-2 mr-6 input-bordered input-accent w-full  transition duration-300 focus:ring-2 focus:outline-none focus:ring-teal-300 font-medium rounded-lg text-lg font-Poppins px-5 py-2.5 mb-2"
               {...register("AvailableSeats")}
             />
           </div>

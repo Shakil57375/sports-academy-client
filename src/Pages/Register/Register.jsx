@@ -122,7 +122,7 @@ const Register = () => {
             transition={{ delay: 0.4, type: "spring", stiffness: 50 }}
             className="text-center lg:ml-20 ml-0 w-full md:w-1/2 lg:my-0 my-5 lg:text-left"
           >
-            <h1 className="text-5xl text-center font-bold lg:mb-16 mb-5">
+            <h1 className="text-5xl font-Marcellus text-center font-bold lg:mb-16 mb-5">
               Register now!
             </h1>
             <img

@@ -23,7 +23,7 @@ const ShowFeedBack = () => {
         <title>SportsMastery | Replied Feedback</title>
       </Helmet>
 
-      <h1 className="text-xl mt-5 mb-7 lg:mb-9 font-semibold text-center text-gray-800 capitalize lg:text-3xl dark:text-white">
+      <h1 className="text-xl font-Poppinsmt-5 mb-7 lg:mb-9 font-semibold text-center text-gray-800 capitalize lg:text-3xl dark:text-white">
         Replied <span className="text-cyan-500">Feedback</span>
       </h1>
 
@@ -35,7 +35,7 @@ const ShowFeedBack = () => {
         </div>
         <form className="flex flex-col gap-5 mt-7">
           <div>
-            <label className="block mb-3  text-lg font-medium text-gray-900 dark:text-white">
+            <label className="block mb-3  text-lg font-Poppins font-medium text-gray-900 dark:text-white">
               Feedback Review :
             </label>
             <div className="input_group">

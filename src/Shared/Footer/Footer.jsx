@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <div>
-      <footer className="footer footer-center p-10 bg-base-200 text-base-content rounded">
+      <footer className="footer footer-center p-10 bg-base-200 text-base font-Poppins-content rounded">
         <div className="grid grid-flow-col gap-4">
-        <Link className="text-lg text-gray-500 font-Poppins" to="/">Home</Link>
-        <Link className="text-lg text-gray-500 font-Poppins" to="/instructors">Instructors</Link>
-        <Link className="text-lg text-gray-500 font-Poppins" to="/classes">Classes</Link>
-        <Link className="text-lg text-gray-500 font-Poppins" to="/dashboard">Dashboard</Link>
+        <Link className="text-lg font-Poppins text-gray-500 font-Poppins" to="/">Home</Link>
+        <Link className="text-lg font-Poppins text-gray-500 font-Poppins" to="/instructors">Instructors</Link>
+        <Link className="text-lg font-Poppins text-gray-500 font-Poppins" to="/classes">Classes</Link>
+        <Link className="text-lg font-Poppins text-gray-500 font-Poppins" to="/dashboard">Dashboard</Link>
         </div>
         <div>
           <div className="grid grid-flow-col gap-4">

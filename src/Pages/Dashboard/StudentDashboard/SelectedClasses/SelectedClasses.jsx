@@ -54,7 +54,7 @@ const SelectedClasses = () => {
       <Helmet>
         <title>Sports Academy | Dashboard | Selected Class</title>
       </Helmet>
-      <p className="lg:text-5xl font-bold lg:mb-7 mb-3  text-center text-xl">
+      <p className="lg:text-5xl font-Marcellus font-bold lg:mb-7 mb-3  text-center text-xl">
         {selectedClasses.length === 0
           ? "You didn't added any class yet"
           : `Your have Added  ${selectedClasses.length} class successfully`}

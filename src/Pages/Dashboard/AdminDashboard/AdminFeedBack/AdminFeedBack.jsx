@@ -48,7 +48,7 @@ const AdminFeedBack = () => {
         <title>SportsMastery | Manage Classes</title>
       </Helmet>
 
-      <h1 className="text-xl mt-5 mb-7 lg:mb-9 font-semibold text-center text-gray-800 capitalize lg:text-3xl dark:text-white">
+      <h1 className="text-xl font-Poppinsmt-5 mb-7 lg:mb-9 font-semibold text-center text-gray-800 capitalize lg:text-3xl dark:text-white">
         Update <span className="text-teal-500">Feedback</span>
       </h1>
 
@@ -72,7 +72,7 @@ const AdminFeedBack = () => {
           </div>
 
           <div>
-            <label className="block mb-3  text-lg font-medium text-gray-900 dark:text-white">
+            <label className="block mb-3  text-lg font-Poppins font-medium text-gray-900 dark:text-white">
               Class Feedback :
             </label>
             <div className="input_group ">

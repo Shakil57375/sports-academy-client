@@ -57,7 +57,7 @@ const Facilities = () => {
                 <div className="flex justify-center items-center opacity-0 bg-gradient-to-t from-cyan-700 to-[rgba(221, 221, 221, 0)] to-opacity-30 duration-500 group-hover:opacity-50 absolute top-0 left-0 h-full w-full"></div>
                 <div className="absolute top-0 duration-200 left-0 w-full h-full flex justify-center items-center opacity-0 hover:opacity-100">
                   <div className="flex-row text-center">
-                    <h1 className="text-gray-50 font-bold text-lg">
+                    <h1 className="text-gray-50 font-bold text-lg font-Poppins">
                       {facility.title}
                     </h1>
                   </div>

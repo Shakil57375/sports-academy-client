@@ -40,13 +40,13 @@ const Header = () => {
   const items = (
     <div className="flex flex-col lg:flex-row gap-5">
       <ActiveLink to="/">
-        <span className="text-lg   ">Home</span>
+        <span className="text-lg font-Poppins   ">Home</span>
       </ActiveLink>
       <ActiveLink to="/instructors">
-        <span className="text-lg  ">Instructors</span>
+        <span className="text-lg font-Poppins  ">Instructors</span>
       </ActiveLink>
       <ActiveLink to="/classes">
-        <span className="text-lg ">Classes</span>
+        <span className="text-lg font-Poppins ">Classes</span>
       </ActiveLink>
       {user && (
         <ActiveLink
@@ -58,7 +58,7 @@ const Header = () => {
               : "/dashboard/selectedClasses"
           }
         >
-          <span className="text-lg  ">Dashboard</span>
+          <span className="text-lg font-Poppins  ">Dashboard</span>
         </ActiveLink>
       )}
     </div>

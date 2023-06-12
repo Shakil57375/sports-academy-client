@@ -18,17 +18,17 @@ const Banner = () => {
           />
           <div className="absolute rounded-xl flex items-center h-full left-0 top-0 bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)]">
             <div className="text-white space-y-3 lg:space-y-7 pl-4 lg:pl-28 w-3/4">
-              <h2 className="lg:text-5xl text-2xl font-bold">
+              <h2 className="lg:text-5xl font-Marcellus text-2xl font-bold">
                 Dribble, Shoot, and Win
               </h2>
-              <p className="text-gray-200 text-xs lg:text-base">
+              <p className="text-gray-200 text-xs lg:text-base font-Poppins">
                 Kick-start your football journey with our top-rated sports
                 academy. With experienced instructors and a state-of-the-art
                 training facility, we offer a comprehensive program that focuses
                 on developing technical proficiency, tactical awareness, and
                 physical fitness.
               </p>
-              <button className="text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 text-xs px-5 py-2.5 font-medium rounded-lg text-center lg:text-base ">
+              <button className="text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 text-xs px-5 py-2.5 font-medium rounded-lg text-center lg:text-base font-Poppins ">
                 Discover More
               </button>
             </div>
@@ -42,16 +42,16 @@ const Banner = () => {
           />
           <div className="absolute rounded-xl flex items-center h-full left-0 top-0 bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)]">
             <div className="text-white space-y-3 lg:space-y-7 pl-4 lg:pl-28 w-3/4">
-              <h2 className="lg:text-5xl text-2xl font-bold">
+              <h2 className="lg:text-5xl font-Marcellus text-2xl font-bold">
                 Hit It for Six with Our Training
               </h2>
-              <p className="text-gray-200 text-xs lg:text-base">
+              <p className="text-gray-200 text-xs lg:text-base font-Poppins">
                 Join our renowned sports academy and experience the thrill of
                 cricket like never before. Our expert instructors are dedicated
                 to helping aspiring cricketers of all ages and skill levels
                 improve their game.
               </p>
-              <button className="text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 text-xs px-5 py-2.5 font-medium rounded-lg text-center lg:text-base ">
+              <button className="text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 text-xs px-5 py-2.5 font-medium rounded-lg text-center lg:text-base font-Poppins ">
                 Discover More
               </button>
             </div>
@@ -65,10 +65,10 @@ const Banner = () => {
           />
           <div className="absolute rounded-xl flex items-center h-full left-0 top-0 bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)]">
             <div className="text-white space-y-3 lg:space-y-7 pl-4 lg:pl-28 w-3/4">
-              <h2 className="lg:text-5xl text-2xl font-bold">
+              <h2 className="lg:text-5xl font-Marcellus text-2xl font-bold">
                 Basketball Excellence Starts Here
               </h2>
-              <p className="text-gray-200 text-xs lg:text-base">
+              <p className="text-gray-200 text-xs lg:text-base font-Poppins">
                 Discover the world of basketball excellence at our prestigious
                 sports academy. Our dedicated team of coaches, with years of
                 playing and teaching experience, will help you build a strong
@@ -76,7 +76,7 @@ const Banner = () => {
                 learn the basics or an advanced player looking to refine your
                 skills, our structured training sessions cater to all abilities.
               </p>
-              <button className="text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 text-xs px-5 py-2.5 font-medium rounded-lg text-center lg:text-base ">
+              <button className="text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 text-xs px-5 py-2.5 font-medium rounded-lg text-center lg:text-base font-Poppins ">
                 Discover More
               </button>
             </div>
@@ -90,10 +90,10 @@ const Banner = () => {
           />
           <div className="absolute rounded-xl flex items-center h-full left-0 top-0 bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)]">
             <div className="text-white space-y-3 lg:space-y-7 pl-4 lg:pl-28 w-3/4">
-              <h2 className="lg:text-5xl text-2xl font-bold">
+              <h2 className="lg:text-5xl font-Marcellus text-2xl font-bold">
                 Tennis Excellence Starts Here
               </h2>
-              <p className="text-gray-200 text-xs lg:text-base">
+              <p className="text-gray-200 text-xs lg:text-base font-Poppins">
                 Experience the thrill of tennis at our renowned sports academy.
                 Our expert instructors are passionate about teaching this
                 dynamic sport to players of all ages and skill levels. Whether
@@ -101,7 +101,7 @@ const Banner = () => {
                 player aiming to enhance your technique, our comprehensive
                 training program covers all aspects of the game.
               </p>
-              <button className="text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 text-xs px-5 py-2.5 font-medium rounded-lg text-center lg:text-base ">
+              <button className="text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 text-xs px-5 py-2.5 font-medium rounded-lg text-center lg:text-base font-Poppins ">
                 Discover More
               </button>
             </div>
@@ -114,10 +114,10 @@ const Banner = () => {
           />
           <div className="absolute rounded-xl flex items-center h-full left-0 top-0 bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)]">
             <div className="text-white space-y-3 lg:space-y-7 pl-4 lg:pl-28 w-3/4">
-              <h2 className="lg:text-5xl text-2xl font-bold">
+              <h2 className="lg:text-5xl font-Marcellus text-2xl font-bold">
                 Unlock Your Swimming Potential
               </h2>
-              <p className="text-gray-200 text-xs lg:text-base">
+              <p className="text-gray-200 text-xs lg:text-base font-Poppins">
                 Immerse yourself in the world of swimming at our leading sports
                 academy. Our certified instructors provide a safe and supportive
                 environment for swimmers of all ages and skill levels. Whether
@@ -126,7 +126,7 @@ const Banner = () => {
                 program covers everything from basic water safety to competitive
                 techniques.
               </p>
-              <button className="text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 text-xs px-5 py-2.5 font-medium rounded-lg text-center lg:text-base ">
+              <button className="text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 text-xs px-5 py-2.5 font-medium rounded-lg text-center lg:text-base font-Poppins ">
                 Discover More
               </button>
             </div>

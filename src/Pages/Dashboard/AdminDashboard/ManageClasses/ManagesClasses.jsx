@@ -17,16 +17,20 @@ const ManagesClasses = () => {
       initial={{ y: -3350 }}
       animate={{ y: 0 }}
       transition={{ delay: 0.5, type: "spring", stiffness: 50 }}
-      className="grid grid-cols-1 lg:grid-cols-2 gap-5"
     >
-      <Helmet>
-        <title>Sports Academy | Dashboard | Manages Classes</title>
-      </Helmet>
-      {classes.map((singleClass) => (
-        <div key={singleClass._id}>
-          <ClassCards singleClass={singleClass} refetch={refetch} />
-        </div>
-      ))}
+      <h1 className=" font-bold text-center text-2xl lg:text-5xl font-Marcellus mb-12">
+        Manage Classes
+      </h1>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+        <Helmet>
+          <title>Sports Academy | Dashboard | Manages Classes</title>
+        </Helmet>
+        {classes.map((singleClass) => (
+          <div key={singleClass._id}>
+            <ClassCards singleClass={singleClass} refetch={refetch} />
+          </div>
+        ))}
+      </div>
     </motion.div>
   );
 };

@@ -11,7 +11,7 @@ const ErrorPage = () => {
 return (
     <div className="flex  relative justify-center h-screen">
       <img className="w-full h-full" src="https://cdn.dribbble.com/users/2504672/screenshots/5675992/008-404-page.jpg"/>
-      <button onClick = {handleGoBack} className="absolute bottom-[180px] font-Montserrat text-lg left-[150px] px-16 pt-6 pb-12 btn d-btn">
+      <button onClick = {handleGoBack} className="absolute bottom-[180px] font-Montserrat text-lg font-Poppins left-[150px] px-16 pt-6 pb-12 btn d-btn">
         Go back to home
       </button>
     </div>
