@@ -1,6 +1,5 @@
 import { Helmet } from "react-helmet-async";
 import { useState } from "react";
-import { motion } from "framer-motion";
 import { Link, Outlet } from "react-router-dom";
 import ActiveLink from "../../Components/ActiveLink/ActiveLink";
 import useAdmin from "../../hooks/useAdmin";
@@ -12,12 +11,10 @@ import {
   FaWindowClose,
 } from "react-icons/fa";
 
-const Dashboard = () => {
+const DashboardLayout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [isAdmin] = useAdmin();
-  console.log(isAdmin);
   const [isInstructor] = useInstructor();
-  console.log(isInstructor);
 
   const handleToggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
@@ -38,7 +35,7 @@ const Dashboard = () => {
         data-drawer-toggle="separator-sidebar"
         aria-controls="separator-sidebar"
         type="button"
-        className="inline-flex z-50 items-center p-2 mt-2 ml-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+        className="inline-flex items-center p-2 mt-2 ml-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
       >
         <span className="sr-only">Open sidebar</span>
         <svg
@@ -56,17 +53,15 @@ const Dashboard = () => {
         </svg>
       </button>
 
-      <motion.aside
-        initial={{ x: -1350 }}
-        animate={{ x: 0 }}
-        transition={{ delay: 1, type: "spring", stiffness: 50 }}
+      <aside
+
         id="separator-sidebar "
         className={`fixed top-0 left-0 z-40 w-64 h-screen transition-transform ${
           sidebarOpen ? "" : "-translate-x-full sm:translate-x-0"
         }`}
         aria-label="Sidebar"
       >
-        <div className="h-full px-3 py-4 ml:0 lg:ml-20 w-72 z-10 overflow-y-auto bg-gray-50 dark:bg-gray-800">
+        <div className="h-full px-3 z-10 overflow-y-auto bg-gray-50 dark:bg-gray-800">
           <ul className="space-y-2 font-medium  border-gray-200 dark:border-gray-700">
             <li className="mb-6">
               <a
@@ -231,7 +226,7 @@ const Dashboard = () => {
             </li>
           </ul>
         </div>
-      </motion.aside>
+      </aside>
 
       <div className="p-4 sm:ml-64">
         <div className="">
@@ -242,4 +237,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default DashboardLayout;
