@@ -1,22 +1,12 @@
-import { useQuery } from "@tanstack/react-query";
-import { useContext } from "react";
 import { FaTrashAlt } from "react-icons/fa";
 import { motion } from "framer-motion";
-import { AuthContext } from "../../../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
+import { Link } from "react-router-dom";
+import useSelectedClasses from "../../../../hooks/useSelectedClasses";
 
 const SelectedClasses = () => {
-  const { user } = useContext(AuthContext);
-  const { data: selectedClasses = [], refetch } = useQuery({
-    queryKey: ["selectedClasses"],
-    queryFn: async () => {
-      const res = await fetch(
-        `http://localhost:5000/selectedClass?email=${user.email}`
-      );
-      return res.json();
-    },
-  });
+  const [selectedClasses,refetch] = useSelectedClasses();
   console.log(selectedClasses);
   const handleDelete = (Classes) => {
     Swal.fire({
@@ -88,7 +78,9 @@ const SelectedClasses = () => {
                 </td>
                 <td>{Classes.instructorEmail}</td>
                 <td>
-                  <button className="my-btn">Pay</button>
+                  <Link to={`/dashboard/payment/${Classes.classId}`}>
+                    <button className="my-btn">Pay</button>
+                  </Link>
                 </td>
                 <td>
                   <FaTrashAlt

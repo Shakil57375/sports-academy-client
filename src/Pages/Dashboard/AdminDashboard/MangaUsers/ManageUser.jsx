@@ -1,23 +1,25 @@
+/* eslint-disable no-unused-vars */
 import { useQuery } from "@tanstack/react-query";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
 import { FaTrashAlt } from "react-icons/fa";
 import "./ManageUser.css";
 import Swal from "sweetalert2";
+import useAxiosSecures from "../../../../hooks/useAxiosSecures";
+import { useContext } from "react";
+import { AuthContext } from "../../../../Provider/AuthProvider";
 
 const ManageUser = () => {
+  const {user} = useContext(AuthContext)
+  const [axiosSecure] = useAxiosSecures()
   const { data: users = [], refetch } = useQuery(["users"], async () => {
-    const res = await fetch("http://localhost:5000/users");
-    return res.json();
+    const res = await axiosSecure.get("/users");
+    return res.data;
   });
   const handleMakeAdmin = (user) => {
-    fetch(`http://localhost:5000/users/admin/${user._id}`, {
-      method: "PATCH",
-    })
-      .then((res) => res.json())
+    axiosSecure.patch(`/users/admin/${user._id}`)
       .then((data) => {
-        console.log(data);
-        if (data.modifiedCount) {
+        if (data.data.modifiedCount) {
           refetch();
           Swal.fire({
             position: "center",

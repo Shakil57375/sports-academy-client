@@ -18,6 +18,8 @@ import Instructors from "../Pages/Instructors/Instructors";
 import AdminFeedBack from "../Pages/Dashboard/AdminDashboard/AdminFeedBack/AdminFeedBack";
 import ShowFeedBack from "../Pages/Dashboard/InstractorsDashboard/ShowFeedBack/ShowFeedBack";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import Payment from "../Pages/Dashboard/StudentDashboard/SelectedClasses/Payment/Payment";
+import PaymentHistory from "../Pages/Dashboard/StudentDashboard/PaymentHistory/PaymentHistory";
 
 const router = createBrowserRouter([
   {
@@ -55,6 +57,32 @@ const router = createBrowserRouter([
       </PrivateRoute>
     ),
     children: [
+      // admin routes
+      {
+        path: "manageUsers",
+        element: (
+          <AdminPrivateRoute>
+            <ManageUser></ManageUser>
+          </AdminPrivateRoute>
+        ),
+      },
+      {
+        path: "manageClasses",
+        element: (
+          <AdminPrivateRoute>
+            <ManagesClasses></ManagesClasses>
+          </AdminPrivateRoute>
+        ),
+      },
+      {
+        path: "sendFeedback/:id",
+        element: (
+          <AdminPrivateRoute>
+            <AdminFeedBack></AdminFeedBack>
+          </AdminPrivateRoute>
+        ),
+      },
+      // instructor routes
       {
         path: "addClass",
         element: (
@@ -81,29 +109,18 @@ const router = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`http://localhost:5000/classes/showFeedback/${params.id}`),
       },
+      // student routes
       {
-        path: "manageUsers",
+        path: "selectedClasses",
         element: (
-          <AdminPrivateRoute>
-            <ManageUser></ManageUser>
-          </AdminPrivateRoute>
+          <PrivateRoute>
+            <SelectedClasses></SelectedClasses>
+          </PrivateRoute>
         ),
       },
       {
-        path: "manageClasses",
-        element: (
-          <AdminPrivateRoute>
-            <ManagesClasses></ManagesClasses>
-          </AdminPrivateRoute>
-        ),
-      },
-      {
-        path: "sendFeedback/:id",
-        element: (
-          <AdminPrivateRoute>
-            <AdminFeedBack></AdminFeedBack>
-          </AdminPrivateRoute>
-        ),
+        path : "payment/:id",
+        element : <PrivateRoute><Payment></Payment></PrivateRoute>
       },
       {
         path: "enrolledClasses",
@@ -114,13 +131,10 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "selectedClasses",
-        element: (
-          <PrivateRoute>
-            <SelectedClasses></SelectedClasses>
-          </PrivateRoute>
-        ),
-      },
+        path : "paymentHistory",
+        element : <PaymentHistory></PaymentHistory>
+      }
+      
     ],
   },
 ]);

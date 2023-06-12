@@ -5,17 +5,19 @@ import { motion } from "framer-motion";
 import { FaEdit } from "react-icons/fa";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
+import useAxiosSecures from "../../../../hooks/useAxiosSecures";
 
 const MyClass = () => {
   const { user } = useContext(AuthContext);
+  const [axiosSecure] = useAxiosSecures()
   console.log(user.email);
   const { data: MyClasses = [] } = useQuery({
     queryKey: ["approvedClass"],
     queryFn: async () => {
-      const res = await fetch(
-        `http://localhost:5000/class?email=${user.email}`
+      const res = await axiosSecure.get(
+        `/class?email=${user.email}`
       );
-      return res.json();
+      return res.data;
     },
   });
   console.log(MyClasses);

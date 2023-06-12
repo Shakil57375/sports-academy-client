@@ -170,6 +170,19 @@ const Dashboard = () => {
                     <span className="flex-1 ml-6 ">Enrolled Classes</span>
                   </div>
                 </ActiveLink>
+                <ActiveLink
+                  onClick={handleCloseDashboard}
+                  to="/dashboard/paymentHistory"
+                >
+                  <div className="flex gap-0">
+                    <img
+                      src="https://i.ibb.co/vYB3HCZ/image-removebg-preview-8.png"
+                      alt=""
+                      className="w-8 h-6"
+                    />
+                    <span className="flex-1 ml-6 ">Payment History</span>
+                  </div>
+                </ActiveLink>
               </div>
             )}
           </ul>

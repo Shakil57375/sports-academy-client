@@ -10,14 +10,23 @@ import useInstructor from "../../hooks/useInstructor";
 const ApprovedCards = (singleClass) => {
   const [axiosSecure] = useAxiosSecures();
   const { user } = useContext(AuthContext);
-  const navigate = useNavigate()
-  const location = useLocation()
-  const [isAdmin] = useAdmin()
-  const [isInstructor] = useInstructor()
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [isAdmin] = useAdmin();
+  const [isInstructor] = useInstructor();
   // eslint-disable-next-line no-unused-vars
   const from = location.state?.from?.pathname || "/";
-  const { image, className, instructorName, feedback, status, AvailableSeats, price, instructorEmail, _id } =
-    singleClass.singleClass;
+  const {
+    image,
+    className,
+    instructorName,
+    feedback,
+    status,
+    AvailableSeats,
+    price,
+    instructorEmail,
+    _id,
+  } = singleClass.singleClass;
   const handleSelect = (data) => {
     if (user) {
       const selectedItem = {
@@ -32,10 +41,9 @@ const ApprovedCards = (singleClass) => {
         classId: _id,
         email: user.email,
       };
-      axiosSecure.post("/selectedClasses", selectedItem)
-      .then(data => {
+      axiosSecure.post("/selectedClasses", selectedItem).then((data) => {
         console.log("after posting new menu item.", data.data);
-        if(data.data.insertedId){
+        if (data.data.insertedId) {
           Swal.fire({
             position: "center",
             icon: "success",
@@ -44,9 +52,8 @@ const ApprovedCards = (singleClass) => {
             timer: 1500,
           });
         }
-      })
-    }
-    else {
+      });
+    } else {
       Swal.fire({
         title: "Please login to select classes",
         icon: "warning",
@@ -56,14 +63,18 @@ const ApprovedCards = (singleClass) => {
         confirmButtonText: "Login Now!",
       }).then((result) => {
         if (result.isConfirmed) {
-          navigate("/login", {state : {from : location}});
+          navigate("/login", { state: { from: location } });
         }
       });
     }
   };
   return (
     <div>
-      <div className="card w-full bg-base-100 shadow-xl">
+      <div
+        className={`card full bg-base-100 ${
+          AvailableSeats === 0 ? "bg-red-600 shadow-xl" : "shadow-xl"
+        }`}
+      >
         <figure>
           <img src={image} className="w-full h-[300px]" alt="Shoes" />
         </figure>
@@ -75,7 +86,9 @@ const ApprovedCards = (singleClass) => {
           <button
             onClick={() => handleSelect(singleClass.singleClass)}
             className="my-btn"
-            disabled = {AvailableSeats === 0 || isAdmin === true || isInstructor === true}
+            disabled={
+              AvailableSeats === 0 || isAdmin === true || isInstructor === true
+            }
           >
             Select
           </button>
